@@ -1,75 +1,76 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
-import BentoGrid from '../components/BentoGrid.astro';
-import BentoCard from '../components/BentoCard.astro';
-import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import BentoGrid from "../components/BentoGrid.astro";
+import BentoCard from "../components/BentoCard.astro";
+import ImagePlaceholder from "../components/ImagePlaceholder.astro";
 
 const socialLinks = [
   {
-    platform: 'Facebook',
-    url: 'https://www.facebook.com/JavaScriptCebu/',
-    handle: '@JavaScriptCebu',
-    followers: '1.8k',
-    description: 'Latest updates, event announcements, and community discussions',
-    icon: '📘',
-    color: 'blue'
+    platform: "Facebook",
+    url: "https://www.facebook.com/JavaScriptCebu/",
+    handle: "@JavaScriptCebu",
+    followers: "1.8k",
+    description:
+      "Latest updates, event announcements, and community discussions",
+    icon: "📘",
+    color: "blue",
   },
   {
-    platform: 'GitHub',
-    url: 'https://github.com/javascriptcebu/',
-    handle: '@javascriptcebu',
-    followers: '500+',
-    description: 'Open source projects, code repositories, and collaboration',
-    icon: '🐙',
-    color: 'gradient'
+    platform: "GitHub",
+    url: "https://github.com/javascriptcebu/",
+    handle: "@javascriptcebu",
+    followers: "500+",
+    description: "Open source projects, code repositories, and collaboration",
+    icon: "🐙",
+    color: "gradient",
   },
   {
-    platform: 'Twitter / X',
-    url: 'https://twitter.com/javascriptcebu',
-    handle: '@javascriptcebu',
-    followers: '1.2k',
-    description: 'Quick updates, tech news, and community highlights',
-    icon: '🐦',
-    color: 'default'
+    platform: "Twitter / X",
+    url: "https://twitter.com/javascriptcebu",
+    handle: "@javascriptcebu",
+    followers: "1.2k",
+    description: "Quick updates, tech news, and community highlights",
+    icon: "🐦",
+    color: "default",
   },
   {
-    platform: 'Discord',
-    url: '#',
-    handle: 'JS Cebu Community',
-    followers: '300+',
-    description: 'Real-time chat, voice channels, and community support',
-    icon: '💬',
-    color: 'primary'
-  }
+    platform: "Discord",
+    url: "#",
+    handle: "JS Cebu Community",
+    followers: "300+",
+    description: "Real-time chat, voice channels, and community support",
+    icon: "💬",
+    color: "primary",
+  },
 ];
 
 const contactInfo = {
-  email: 'hello@jscebu.org',
-  website: 'https://www.jscebu.org'
+  email: "hello@jscebu.org",
+  website: "https://www.jscebu.org",
 };
 
 const communityChannels = [
   {
-    name: 'Announcements',
-    type: 'Channel',
-    description: 'Official announcements and important updates'
+    name: "Announcements",
+    type: "Channel",
+    description: "Official announcements and important updates",
   },
   {
-    name: 'General Discussion',
-    type: 'Forum',
-    description: 'Open discussions about JavaScript and web development'
+    name: "General Discussion",
+    type: "Forum",
+    description: "Open discussions about JavaScript and web development",
   },
   {
-    name: 'Help & Support',
-    type: 'Support',
-    description: 'Get help with coding problems and technical questions'
+    name: "Help & Support",
+    type: "Support",
+    description: "Get help with coding problems and technical questions",
   },
   {
-    name: 'Job Board',
-    type: 'Opportunities',
-    description: 'Career opportunities and freelance projects'
-  }
+    name: "Job Board",
+    type: "Opportunities",
+    description: "Career opportunities and freelance projects",
+  },
 ];
 ---
 
@@ -96,31 +97,35 @@ const communityChannels = [
           <span class="section-label">Social Media</span>
           <h2>Follow Us Online</h2>
         </div>
-        
+
         <BentoGrid>
-          {socialLinks.map(link => (
-            <BentoCard class="col-span-3 row-span-2" variant={link.color as any} href={link.url}>
-              <div class="social-card">
-                <div class="social-header">
-                  <ImagePlaceholder width="80px" height="80px" pattern="dots">
-                    <span style="font-size: 3rem;">{link.icon}</span>
-                  </ImagePlaceholder>
-                  <div class="follower-count">
-                    <span class="count">{link.followers}</span>
-                    <span class="label">followers</span>
+          {
+            socialLinks.map((link) => (
+              <BentoCard
+                class="col-span-3 row-span-2"
+                variant={link.color as any}
+                href={link.url}
+              >
+                <div class="social-card">
+                  <div class="social-header">
+                    <ImagePlaceholder width="80px" height="80px" pattern="dots">
+                      <span style="font-size: 3rem;">{link.icon}</span>
+                    </ImagePlaceholder>
+                    <div class="follower-count">
+                      <span class="count">{link.followers}</span>
+                      <span class="label">followers</span>
+                    </div>
+                  </div>
+                  <h3>{link.platform}</h3>
+                  <p class="handle">{link.handle}</p>
+                  <p class="description">{link.description}</p>
+                  <div class="social-footer">
+                    <span class="follow-link">Follow us →</span>
                   </div>
                 </div>
-                <h3>{link.platform}</h3>
-                <p class="handle">{link.handle}</p>
-                <p class="description">{link.description}</p>
-                <div class="social-footer">
-                  <span class="follow-link">
-                    Follow us →
-                  </span>
-                </div>
-              </div>
-            </BentoCard>
-          ))}
+              </BentoCard>
+            ))
+          }
         </BentoGrid>
       </div>
     </section>
@@ -155,10 +160,16 @@ const communityChannels = [
               <h2>Stay in the Loop</h2>
               <p>Get weekly updates on events, workshops, and community news</p>
               <form class="newsletter-form">
-                <input type="email" placeholder="Enter your email" class="email-input" />
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  class="email-input"
+                />
                 <button type="submit" class="subscribe-btn">Subscribe</button>
               </form>
-              <span class="newsletter-note">We respect your privacy. Unsubscribe anytime.</span>
+              <span class="newsletter-note"
+                >We respect your privacy. Unsubscribe anytime.</span
+              >
             </div>
           </BentoCard>
         </BentoGrid>
@@ -172,20 +183,24 @@ const communityChannels = [
           <span class="section-label">Channels</span>
           <h2>Community Spaces</h2>
         </div>
-        
+
         <BentoGrid>
-          {communityChannels.map(channel => (
-            <BentoCard class="col-span-3">
-              <div class="channel-card">
-                <div class="channel-header">
-                  <span class="channel-type">{channel.type}</span>
+          {
+            communityChannels.map((channel) => (
+              <BentoCard class="col-span-3">
+                <div class="channel-card">
+                  <div class="channel-header">
+                    <span class="channel-type">{channel.type}</span>
+                  </div>
+                  <h4>{channel.name}</h4>
+                  <p>{channel.description}</p>
+                  <a href="#" class="channel-link">
+                    Join Channel →
+                  </a>
                 </div>
-                <h4>{channel.name}</h4>
-                <p>{channel.description}</p>
-                <a href="#" class="channel-link">Join Channel →</a>
-              </div>
-            </BentoCard>
-          ))}
+              </BentoCard>
+            ))
+          }
 
           <!-- Community Guidelines -->
           <BentoCard class="col-span-6">
@@ -235,7 +250,9 @@ const communityChannels = [
             <div class="qr-card">
               <h3>Quick Access</h3>
               <ImagePlaceholder width="200px" height="200px" pattern="grid">
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                <div
+                  style="display: flex; flex-direction: column; align-items: center; gap: 1rem;"
+                >
                   <span style="font-size: 4rem;">📱</span>
                   <span style="font-size: 0.875rem;">QR Code</span>
                 </div>
@@ -264,9 +281,11 @@ const communityChannels = [
   /* Hero Section */
   .hero {
     padding: var(--space-3xl) 0 var(--space-2xl);
-    background: linear-gradient(135deg, 
+    background: linear-gradient(
+      135deg,
       color-mix(in srgb, var(--color-yellow) 10%, var(--color-bg)),
-      var(--color-bg));
+      var(--color-bg)
+    );
     text-align: center;
   }
 
@@ -294,7 +313,11 @@ const communityChannels = [
   }
 
   .highlight {
-    background: linear-gradient(135deg, var(--color-yellow), var(--color-yellow-light));
+    background: linear-gradient(
+      135deg,
+      var(--color-yellow),
+      var(--color-yellow-light)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
