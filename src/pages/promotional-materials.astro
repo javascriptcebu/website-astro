@@ -1,0 +1,743 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import BentoCard from '../components/BentoCard.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+
+const logos = [
+  {
+    name: 'Horizontal Logo - Light',
+    description: 'Best for light backgrounds',
+    format: 'PNG, SVG',
+    size: '1920x480'
+  },
+  {
+    name: 'Horizontal Logo - Dark',
+    description: 'Best for dark backgrounds',
+    format: 'PNG, SVG',
+    size: '1920x480'
+  },
+  {
+    name: 'Square Logo',
+    description: 'Perfect for social media',
+    format: 'PNG, SVG',
+    size: '1080x1080'
+  },
+  {
+    name: 'Icon Only',
+    description: 'Minimal branding',
+    format: 'PNG, SVG, ICO',
+    size: '512x512'
+  }
+];
+
+const templates = [
+  {
+    name: 'Event Banner',
+    description: 'Customizable event announcements',
+    dimensions: '1920x1080'
+  },
+  {
+    name: 'Social Media Post',
+    description: 'Instagram and Facebook ready',
+    dimensions: '1080x1080'
+  },
+  {
+    name: 'LinkedIn Cover',
+    description: 'Professional network branding',
+    dimensions: '1584x396'
+  },
+  {
+    name: 'Email Signature',
+    description: 'Professional email footer',
+    dimensions: '600x200'
+  }
+];
+
+const brandColors = [
+  { name: 'Primary Yellow', hex: '#F4D03F' },
+  { name: 'React Blue', hex: '#61DAFB' },
+  { name: 'Vue Green', hex: '#42B883' },
+  { name: 'Angular Red', hex: '#DD0031' }
+];
+---
+
+<Layout title="Promotional Materials">
+  <Navigation />
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-badge">Brand Assets</span>
+          <h1>Promotional <span class="highlight">Materials</span></h1>
+          <p class="hero-description">
+            Download official JavaScript Cebu brand assets for your events and promotions
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Logos Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Logos</span>
+          <h2>Official Logos</h2>
+          <p>Download our logos in various formats and styles</p>
+        </div>
+        
+        <BentoGrid>
+          {logos.map((logo, index) => (
+            <BentoCard class="col-span-3">
+              <div class="logo-card">
+                <ImagePlaceholder width="100%" height="200px" pattern={index % 2 === 0 ? 'dots' : 'lines'}>
+                  <div class="logo-preview">
+                    <span style="font-size: 3rem;">🟨</span>
+                    <span style="font-size: 0.875rem; margin-top: 0.5rem;">JS Cebu</span>
+                  </div>
+                </ImagePlaceholder>
+                <h4>{logo.name}</h4>
+                <p>{logo.description}</p>
+                <div class="logo-meta">
+                  <span class="meta-item">📁 {logo.format}</span>
+                  <span class="meta-item">📐 {logo.size}</span>
+                </div>
+                <button class="download-btn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  Download
+                </button>
+              </div>
+            </BentoCard>
+          ))}
+
+          <!-- Download All -->
+          <BentoCard class="col-span-6" variant="gradient">
+            <div class="download-all">
+              <h3>Get Everything at Once</h3>
+              <p>Download all logos in a single ZIP file including all formats and variations</p>
+              <button class="btn btn-dark">
+                Download Complete Logo Pack (12MB)
+              </button>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Brand Guidelines -->
+    <section class="section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Guidelines</span>
+          <h2>Brand Guidelines</h2>
+        </div>
+        
+        <BentoGrid>
+          <!-- Brand Story -->
+          <BentoCard class="col-span-3 row-span-2">
+            <div class="brand-story">
+              <h3>Our Brand Story</h3>
+              <p class="story-text">
+                JavaScript Cebu is a community driven organization for all communities but not limited to JS. 
+                We do meetups, codecamps and other types of events to pay it forward for others and help 
+                elevate the tech scene in Cebu.
+              </p>
+              <div class="brand-values">
+                <h4>Brand Values</h4>
+                <ul>
+                  <li>Community First</li>
+                  <li>Open Source</li>
+                  <li>Continuous Learning</li>
+                  <li>Innovation</li>
+                </ul>
+              </div>
+            </div>
+          </BentoCard>
+
+          <!-- Color Palette -->
+          <BentoCard class="col-span-3">
+            <div class="color-palette">
+              <h3>Color Palette</h3>
+              <div class="colors-grid">
+                {brandColors.map(color => (
+                  <div class="color-item">
+                    <div class="color-swatch" style={`background: ${color.hex};`}></div>
+                    <span class="color-name">{color.name}</span>
+                    <span class="color-hex">{color.hex}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </BentoCard>
+
+          <!-- Typography -->
+          <BentoCard class="col-span-3">
+            <div class="typography-guide">
+              <h3>Typography</h3>
+              <div class="font-samples">
+                <div class="font-sample">
+                  <span class="sample-text" style="font-family: var(--font-display); font-size: 2rem;">Aa</span>
+                  <div>
+                    <span class="font-name">Sora</span>
+                    <span class="font-usage">Headlines</span>
+                  </div>
+                </div>
+                <div class="font-sample">
+                  <span class="sample-text" style="font-family: var(--font-sans); font-size: 2rem;">Aa</span>
+                  <div>
+                    <span class="font-name">DM Sans</span>
+                    <span class="font-usage">Body Text</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          <!-- Usage Guidelines -->
+          <BentoCard class="col-span-6">
+            <div class="usage-guidelines">
+              <h3>Logo Usage Guidelines</h3>
+              <div class="do-dont-grid">
+                <div class="do-section">
+                  <h4 class="do-title">✅ Do's</h4>
+                  <ul>
+                    <li>Use official colors</li>
+                    <li>Maintain clear space around logo</li>
+                    <li>Use appropriate version for background</li>
+                    <li>Preserve original proportions</li>
+                  </ul>
+                </div>
+                <div class="dont-section">
+                  <h4 class="dont-title">❌ Don'ts</h4>
+                  <ul>
+                    <li>Don't change colors arbitrarily</li>
+                    <li>Don't stretch or distort</li>
+                    <li>Don't add effects or shadows</li>
+                    <li>Don't place on busy backgrounds</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Templates Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Templates</span>
+          <h2>Design Templates</h2>
+          <p>Ready-to-use templates for your community events</p>
+        </div>
+        
+        <BentoGrid>
+          {templates.map((template, index) => (
+            <BentoCard class="col-span-3">
+              <div class="template-card">
+                <ImagePlaceholder width="100%" height="180px" pattern={index % 2 === 0 ? 'grid' : 'waves'}>
+                  <div class="template-preview">
+                    <span style="font-size: 2rem;">📄</span>
+                  </div>
+                </ImagePlaceholder>
+                <h4>{template.name}</h4>
+                <p>{template.description}</p>
+                <span class="dimensions">📐 {template.dimensions}</span>
+                <div class="template-actions">
+                  <button class="action-btn">Preview</button>
+                  <button class="action-btn primary">Download</button>
+                </div>
+              </div>
+            </BentoCard>
+          ))}
+
+          <!-- Custom Request -->
+          <BentoCard class="col-span-6" variant="primary">
+            <div class="custom-request">
+              <h3>Need Something Custom?</h3>
+              <p>Contact us for specific design needs or custom promotional materials</p>
+              <a href="/official-links" class="btn btn-dark">Request Custom Design</a>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- License Section -->
+    <section class="section-alt">
+      <div class="container">
+        <BentoGrid>
+          <BentoCard class="col-span-6">
+            <div class="license-info">
+              <h3>License & Usage Rights</h3>
+              <p>
+                All JavaScript Cebu brand assets are available under Creative Commons Attribution 4.0 International License. 
+                You are free to use, share, and adapt these materials for community events and promotions.
+              </p>
+              <div class="license-points">
+                <div class="license-point">
+                  <span class="point-icon">📋</span>
+                  <div>
+                    <h5>Attribution Required</h5>
+                    <p>Credit JavaScript Cebu when using our materials</p>
+                  </div>
+                </div>
+                <div class="license-point">
+                  <span class="point-icon">🔄</span>
+                  <div>
+                    <h5>Share Alike</h5>
+                    <p>Distribute derivative works under the same license</p>
+                  </div>
+                </div>
+                <div class="license-point">
+                  <span class="point-icon">✨</span>
+                  <div>
+                    <h5>Non-Commercial</h5>
+                    <p>For community and educational purposes</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    background: linear-gradient(135deg, 
+      color-mix(in srgb, var(--color-yellow) 15%, var(--color-bg)),
+      var(--color-bg));
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: color-mix(in srgb, var(--color-yellow) 15%, var(--color-bg));
+    border: 1px solid var(--color-yellow);
+    border-radius: var(--radius-2xl);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-yellow);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: var(--space-md);
+  }
+
+  .highlight {
+    background: linear-gradient(135deg, var(--color-yellow), var(--color-yellow-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Sections */
+  .section {
+    padding: var(--space-3xl) 0;
+  }
+
+  .section-alt {
+    padding: var(--space-3xl) 0;
+    background: var(--color-bg-secondary);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .section-label {
+    display: inline-block;
+    padding: 0.375rem 1rem;
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-radius: var(--radius-2xl);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+  }
+
+  .section-header h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .section-header p {
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+  }
+
+  /* Logo Cards */
+  .logo-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .logo-card h4 {
+    margin: var(--space-md) 0 var(--space-sm);
+  }
+
+  .logo-card p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .logo-meta {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+
+  .meta-item {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .download-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .download-btn:hover {
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-color: var(--color-yellow);
+    transform: translateY(-2px);
+  }
+
+  /* Download All */
+  .download-all {
+    text-align: center;
+    padding: var(--space-xl);
+  }
+
+  .download-all h3 {
+    color: var(--color-black);
+    margin-bottom: var(--space-sm);
+  }
+
+  .download-all p {
+    color: var(--color-black);
+    opacity: 0.8;
+    margin-bottom: var(--space-xl);
+  }
+
+  /* Brand Story */
+  .brand-story {
+    height: 100%;
+  }
+
+  .story-text {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-xl);
+  }
+
+  .brand-values h4 {
+    margin-bottom: var(--space-md);
+  }
+
+  .brand-values ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brand-values li {
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .brand-values li:last-child {
+    border-bottom: none;
+  }
+
+  /* Color Palette */
+  .colors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .color-item {
+    text-align: center;
+  }
+
+  .color-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-lg);
+    margin: 0 auto var(--space-sm);
+    box-shadow: var(--shadow-md);
+  }
+
+  .color-name {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+  }
+
+  .color-hex {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+  }
+
+  /* Typography Guide */
+  .font-samples {
+    display: flex;
+    gap: var(--space-xl);
+    margin-top: var(--space-lg);
+  }
+
+  .font-sample {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .sample-text {
+    font-weight: 700;
+  }
+
+  .font-name {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+  }
+
+  .font-usage {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* Usage Guidelines */
+  .do-dont-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    margin-top: var(--space-lg);
+  }
+
+  .do-title {
+    color: var(--color-green);
+    margin-bottom: var(--space-md);
+  }
+
+  .dont-title {
+    color: var(--color-red);
+    margin-bottom: var(--space-md);
+  }
+
+  .do-section ul,
+  .dont-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .do-section li,
+  .dont-section li {
+    padding: var(--space-sm) 0;
+  }
+
+  /* Template Cards */
+  .template-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .template-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .template-card h4 {
+    margin: var(--space-md) 0 var(--space-sm);
+  }
+
+  .template-card p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .dimensions {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .template-actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: auto;
+  }
+
+  .action-btn {
+    flex: 1;
+    padding: 0.625rem 1rem;
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .action-btn.primary {
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-color: var(--color-yellow);
+  }
+
+  .action-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Custom Request */
+  .custom-request {
+    text-align: center;
+    padding: var(--space-lg);
+  }
+
+  .custom-request h3 {
+    color: var(--color-black);
+    margin-bottom: var(--space-sm);
+  }
+
+  .custom-request p {
+    color: var(--color-black);
+    opacity: 0.8;
+    margin-bottom: var(--space-lg);
+  }
+
+  /* License Info */
+  .license-info {
+    padding: var(--space-lg);
+  }
+
+  .license-info p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-xl);
+  }
+
+  .license-points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .license-point {
+    text-align: center;
+  }
+
+  .point-icon {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .license-point h5 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .license-point p {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    transition: all var(--transition-base);
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .btn-dark {
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .btn-dark:hover {
+    background: var(--color-gray-800);
+    transform: translateY(-2px);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .colors-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .font-samples {
+      flex-direction: column;
+    }
+
+    .do-dont-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .license-points {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

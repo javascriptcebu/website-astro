@@ -1,0 +1,672 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import BentoCard from '../components/BentoCard.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+
+const socialLinks = [
+  {
+    platform: 'Facebook',
+    url: 'https://www.facebook.com/JavaScriptCebu/',
+    handle: '@JavaScriptCebu',
+    followers: '1.8k',
+    description: 'Latest updates, event announcements, and community discussions',
+    icon: '📘',
+    color: 'blue'
+  },
+  {
+    platform: 'GitHub',
+    url: 'https://github.com/javascriptcebu/',
+    handle: '@javascriptcebu',
+    followers: '500+',
+    description: 'Open source projects, code repositories, and collaboration',
+    icon: '🐙',
+    color: 'gradient'
+  },
+  {
+    platform: 'Twitter / X',
+    url: 'https://twitter.com/javascriptcebu',
+    handle: '@javascriptcebu',
+    followers: '1.2k',
+    description: 'Quick updates, tech news, and community highlights',
+    icon: '🐦',
+    color: 'default'
+  },
+  {
+    platform: 'Discord',
+    url: '#',
+    handle: 'JS Cebu Community',
+    followers: '300+',
+    description: 'Real-time chat, voice channels, and community support',
+    icon: '💬',
+    color: 'primary'
+  }
+];
+
+const contactInfo = {
+  email: 'hello@jscebu.org',
+  website: 'https://www.jscebu.org'
+};
+
+const communityChannels = [
+  {
+    name: 'Announcements',
+    type: 'Channel',
+    description: 'Official announcements and important updates'
+  },
+  {
+    name: 'General Discussion',
+    type: 'Forum',
+    description: 'Open discussions about JavaScript and web development'
+  },
+  {
+    name: 'Help & Support',
+    type: 'Support',
+    description: 'Get help with coding problems and technical questions'
+  },
+  {
+    name: 'Job Board',
+    type: 'Opportunities',
+    description: 'Career opportunities and freelance projects'
+  }
+];
+---
+
+<Layout title="Official Links">
+  <Navigation />
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-badge">Connect</span>
+          <h1>Official <span class="highlight">Links</span></h1>
+          <p class="hero-description">
+            Stay connected with JavaScript Cebu across all our official channels
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Media Links -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Social Media</span>
+          <h2>Follow Us Online</h2>
+        </div>
+        
+        <BentoGrid>
+          {socialLinks.map(link => (
+            <BentoCard class="col-span-3 row-span-2" variant={link.color as any} href={link.url}>
+              <div class="social-card">
+                <div class="social-header">
+                  <ImagePlaceholder width="80px" height="80px" pattern="dots">
+                    <span style="font-size: 3rem;">{link.icon}</span>
+                  </ImagePlaceholder>
+                  <div class="follower-count">
+                    <span class="count">{link.followers}</span>
+                    <span class="label">followers</span>
+                  </div>
+                </div>
+                <h3>{link.platform}</h3>
+                <p class="handle">{link.handle}</p>
+                <p class="description">{link.description}</p>
+                <div class="social-footer">
+                  <span class="follow-link">
+                    Follow us →
+                  </span>
+                </div>
+              </div>
+            </BentoCard>
+          ))}
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="section-alt">
+      <div class="container">
+        <BentoGrid>
+          <BentoCard class="col-span-3">
+            <div class="contact-card">
+              <h3>📧 Email Us</h3>
+              <p>For general inquiries, partnerships, and support</p>
+              <a href={`mailto:${contactInfo.email}`} class="contact-link">
+                {contactInfo.email}
+              </a>
+            </div>
+          </BentoCard>
+
+          <BentoCard class="col-span-3">
+            <div class="contact-card">
+              <h3>🌐 Visit Our Website</h3>
+              <p>Main hub for all community information</p>
+              <a href={contactInfo.website} class="contact-link">
+                {contactInfo.website}
+              </a>
+            </div>
+          </BentoCard>
+
+          <!-- Newsletter Signup -->
+          <BentoCard class="col-span-6" variant="gradient">
+            <div class="newsletter-card">
+              <h2>Stay in the Loop</h2>
+              <p>Get weekly updates on events, workshops, and community news</p>
+              <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email" class="email-input" />
+                <button type="submit" class="subscribe-btn">Subscribe</button>
+              </form>
+              <span class="newsletter-note">We respect your privacy. Unsubscribe anytime.</span>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Community Channels -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Channels</span>
+          <h2>Community Spaces</h2>
+        </div>
+        
+        <BentoGrid>
+          {communityChannels.map(channel => (
+            <BentoCard class="col-span-3">
+              <div class="channel-card">
+                <div class="channel-header">
+                  <span class="channel-type">{channel.type}</span>
+                </div>
+                <h4>{channel.name}</h4>
+                <p>{channel.description}</p>
+                <a href="#" class="channel-link">Join Channel →</a>
+              </div>
+            </BentoCard>
+          ))}
+
+          <!-- Community Guidelines -->
+          <BentoCard class="col-span-6">
+            <div class="guidelines-card">
+              <h3>Community Guidelines</h3>
+              <div class="guidelines-grid">
+                <div class="guideline">
+                  <span class="guideline-icon">🤝</span>
+                  <div>
+                    <h5>Be Respectful</h5>
+                    <p>Treat everyone with kindness and respect</p>
+                  </div>
+                </div>
+                <div class="guideline">
+                  <span class="guideline-icon">💡</span>
+                  <div>
+                    <h5>Share Knowledge</h5>
+                    <p>Help others learn and grow</p>
+                  </div>
+                </div>
+                <div class="guideline">
+                  <span class="guideline-icon">🎯</span>
+                  <div>
+                    <h5>Stay On Topic</h5>
+                    <p>Keep discussions relevant and focused</p>
+                  </div>
+                </div>
+                <div class="guideline">
+                  <span class="guideline-icon">🚫</span>
+                  <div>
+                    <h5>No Spam</h5>
+                    <p>Avoid promotional content without permission</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- QR Code & Quick Access -->
+    <section class="section-alt">
+      <div class="container">
+        <BentoGrid>
+          <BentoCard class="col-span-3" variant="primary">
+            <div class="qr-card">
+              <h3>Quick Access</h3>
+              <ImagePlaceholder width="200px" height="200px" pattern="grid">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                  <span style="font-size: 4rem;">📱</span>
+                  <span style="font-size: 0.875rem;">QR Code</span>
+                </div>
+              </ImagePlaceholder>
+              <p>Scan to access all our links</p>
+            </div>
+          </BentoCard>
+
+          <BentoCard class="col-span-3">
+            <div class="link-tree">
+              <h3>All Links in One Place</h3>
+              <div class="quick-links">
+                <a href="#" class="quick-link">Linktree</a>
+                <a href="#" class="quick-link">Linktr.ee/jscebu</a>
+                <a href="#" class="quick-link">jscebu.bio.link</a>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    background: linear-gradient(135deg, 
+      color-mix(in srgb, var(--color-yellow) 10%, var(--color-bg)),
+      var(--color-bg));
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: color-mix(in srgb, var(--color-yellow) 15%, var(--color-bg));
+    border: 1px solid var(--color-yellow);
+    border-radius: var(--radius-2xl);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-yellow);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: var(--space-md);
+  }
+
+  .highlight {
+    background: linear-gradient(135deg, var(--color-yellow), var(--color-yellow-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Sections */
+  .section {
+    padding: var(--space-3xl) 0;
+  }
+
+  .section-alt {
+    padding: var(--space-3xl) 0;
+    background: var(--color-bg-secondary);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .section-label {
+    display: inline-block;
+    padding: 0.375rem 1rem;
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-radius: var(--radius-2xl);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+  }
+
+  /* Social Cards */
+  .social-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .social-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-lg);
+  }
+
+  .follower-count {
+    text-align: right;
+  }
+
+  .follower-count .count {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .follower-count .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .bento-card.blue .follower-count,
+  .bento-card.gradient .follower-count,
+  .bento-card.primary .follower-count {
+    color: var(--color-white);
+  }
+
+  .bento-card.gradient .follower-count {
+    color: var(--color-black);
+  }
+
+  .social-card h3 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .bento-card.blue h3,
+  .bento-card.primary h3 {
+    color: var(--color-white);
+  }
+
+  .bento-card.gradient h3 {
+    color: var(--color-black);
+  }
+
+  .handle {
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    opacity: 0.9;
+  }
+
+  .bento-card.blue .handle,
+  .bento-card.primary .handle {
+    color: var(--color-white);
+  }
+
+  .bento-card.gradient .handle {
+    color: var(--color-black);
+  }
+
+  .social-card .description {
+    flex: 1;
+    margin-bottom: var(--space-lg);
+  }
+
+  .bento-card.blue .description,
+  .bento-card.primary .description {
+    color: var(--color-white);
+    opacity: 0.9;
+  }
+
+  .bento-card.gradient .description {
+    color: var(--color-black);
+    opacity: 0.8;
+  }
+
+  .social-footer {
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .bento-card.gradient .social-footer {
+    border-top-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .follow-link {
+    font-weight: 600;
+  }
+
+  .bento-card.blue .follow-link,
+  .bento-card.primary .follow-link {
+    color: var(--color-white);
+  }
+
+  .bento-card.gradient .follow-link {
+    color: var(--color-black);
+  }
+
+  /* Contact Cards */
+  .contact-card {
+    text-align: center;
+    padding: var(--space-lg);
+  }
+
+  .contact-card h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .contact-card p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-lg);
+  }
+
+  .contact-link {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .contact-link:hover {
+    background: var(--color-yellow-dark);
+    transform: translateY(-2px);
+  }
+
+  /* Newsletter */
+  .newsletter-card {
+    text-align: center;
+    padding: var(--space-xl);
+  }
+
+  .newsletter-card h2 {
+    color: var(--color-black);
+    margin-bottom: var(--space-sm);
+  }
+
+  .newsletter-card p {
+    color: var(--color-black);
+    opacity: 0.8;
+    margin-bottom: var(--space-xl);
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: var(--space-md);
+    max-width: 500px;
+    margin: 0 auto var(--space-md);
+  }
+
+  .email-input {
+    flex: 1;
+    padding: 0.875rem 1.25rem;
+    background: var(--color-white);
+    border: 2px solid transparent;
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+  }
+
+  .email-input:focus {
+    outline: none;
+    border-color: var(--color-black);
+  }
+
+  .subscribe-btn {
+    padding: 0.875rem 2rem;
+    background: var(--color-black);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .subscribe-btn:hover {
+    background: var(--color-gray-800);
+    transform: translateY(-2px);
+  }
+
+  .newsletter-note {
+    font-size: 0.875rem;
+    color: var(--color-black);
+    opacity: 0.6;
+  }
+
+  /* Channel Cards */
+  .channel-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .channel-header {
+    margin-bottom: var(--space-md);
+  }
+
+  .channel-type {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .channel-card h4 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .channel-card p {
+    flex: 1;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .channel-link {
+    color: var(--color-yellow);
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform var(--transition-fast);
+  }
+
+  .channel-link:hover {
+    transform: translateX(4px);
+  }
+
+  /* Guidelines */
+  .guidelines-card {
+    padding: var(--space-lg);
+  }
+
+  .guidelines-card h3 {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .guidelines-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .guideline {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+  }
+
+  .guideline-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .guideline h5 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .guideline p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* QR Card */
+  .qr-card {
+    text-align: center;
+    padding: var(--space-lg);
+  }
+
+  .qr-card h3 {
+    color: var(--color-black);
+    margin-bottom: var(--space-lg);
+  }
+
+  .qr-card p {
+    color: var(--color-black);
+    opacity: 0.8;
+    margin-top: var(--space-md);
+  }
+
+  /* Link Tree */
+  .link-tree {
+    text-align: center;
+    padding: var(--space-lg);
+  }
+
+  .quick-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+  }
+
+  .quick-link {
+    padding: 0.75rem 1.5rem;
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+  }
+
+  .quick-link:hover {
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-color: var(--color-yellow);
+    transform: translateY(-2px);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .newsletter-form {
+      flex-direction: column;
+    }
+
+    .guidelines-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,82 @@
+---
+export interface Props {
+  width?: string;
+  height?: string;
+  gradient?: string;
+  pattern?: 'dots' | 'lines' | 'grid' | 'waves' | 'circles';
+  class?: string;
+}
+
+const { 
+  width = '100%', 
+  height = '200px', 
+  gradient = 'linear-gradient(135deg, var(--color-yellow) 0%, var(--color-yellow-light) 100%)',
+  pattern = 'dots',
+  class: className
+} = Astro.props;
+
+const patternId = `pattern-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div class={`image-placeholder ${className || ''}`} style={`width: ${width}; height: ${height};`}>
+  <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id={patternId} x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+        {pattern === 'dots' && (
+          <circle cx="20" cy="20" r="2" fill="currentColor" opacity="0.3" />
+        )}
+        {pattern === 'lines' && (
+          <>
+            <line x1="0" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="1" opacity="0.2" />
+            <line x1="20" y1="0" x2="20" y2="40" stroke="currentColor" stroke-width="1" opacity="0.2" />
+          </>
+        )}
+        {pattern === 'grid' && (
+          <rect x="0" y="0" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1" opacity="0.1" />
+        )}
+        {pattern === 'waves' && (
+          <path d="M0,20 Q10,10 20,20 T40,20" stroke="currentColor" fill="none" stroke-width="1" opacity="0.2" />
+        )}
+        {pattern === 'circles' && (
+          <circle cx="20" cy="20" r="15" fill="none" stroke="currentColor" stroke-width="1" opacity="0.1" />
+        )}
+      </pattern>
+      <linearGradient id={`gradient-${patternId}`} x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:var(--color-yellow);stop-opacity:0.6" />
+        <stop offset="100%" style="stop-color:var(--color-yellow-light);stop-opacity:0.3" />
+      </linearGradient>
+    </defs>
+    <rect width="100%" height="100%" fill={`url(#gradient-${patternId})`} />
+    <rect width="100%" height="100%" fill={`url(#${patternId})`} />
+  </svg>
+  <div class="placeholder-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .image-placeholder {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-bg-tertiary);
+  }
+
+  .image-placeholder svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .placeholder-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

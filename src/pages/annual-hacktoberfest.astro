@@ -1,0 +1,1143 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import BentoCard from '../components/BentoCard.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+
+const schedule = [
+  {
+    week: 'Week 1',
+    theme: 'Getting Started',
+    activities: ['Git & GitHub basics', 'Finding first issues', 'Setting up dev environment']
+  },
+  {
+    week: 'Week 2',
+    theme: 'Deep Dive',
+    activities: ['Code reviews', 'Advanced Git', 'Best practices']
+  },
+  {
+    week: 'Week 3',
+    theme: 'Team Projects',
+    activities: ['Group coding', 'Pair programming', 'Project showcase']
+  },
+  {
+    week: 'Week 4',
+    theme: 'Final Sprint',
+    activities: ['Hackathon', 'Presentations', 'Awards ceremony']
+  }
+];
+
+const pastStats = [
+  { year: 2021, participants: 80, prs: 234, projects: 15 },
+  { year: 2022, participants: 120, prs: 456, projects: 23 },
+  { year: 2023, participants: 180, prs: 678, projects: 34 },
+  { year: 2024, participants: 200, prs: 850, projects: 42 }
+];
+
+const prizes = [
+  {
+    tier: 'Gold',
+    requirement: '10+ Quality PRs',
+    prize: 'Premium swag kit + JetBrains license',
+    icon: '🏆'
+  },
+  {
+    tier: 'Silver',
+    requirement: '5-9 Quality PRs',
+    prize: 'T-shirt + stickers + digital certificate',
+    icon: '🥈'
+  },
+  {
+    tier: 'Bronze',
+    requirement: '2-4 Quality PRs',
+    prize: 'Stickers + digital certificate',
+    icon: '🥉'
+  }
+];
+---
+
+<Layout title="Annual Hacktoberfest">
+  <Navigation />
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-icon">🎃</div>
+          <h1>Annual <span class="highlight">Hacktoberfest</span></h1>
+          <p class="hero-description">
+            Join Cebu's biggest open source celebration! A month-long festival of code, 
+            collaboration, and community building.
+          </p>
+          <div class="hero-date">
+            <span class="date-badge">October 1-31, 2024</span>
+          </div>
+          <div class="hero-actions">
+            <a href="https://hacktoberfest.jscebu.org" class="btn btn-primary">
+              Register Now
+            </a>
+            <a href="#schedule" class="btn btn-secondary">
+              View Schedule
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What is Hacktoberfest -->
+    <section class="section">
+      <div class="container">
+        <BentoGrid>
+          <BentoCard class="col-span-6 row-span-2">
+            <div class="about-section">
+              <div class="about-content">
+                <span class="section-label">About</span>
+                <h2>What is Hacktoberfest?</h2>
+                <p class="lead">
+                  Hacktoberfest is a month-long celebration of open source software run by DigitalOcean. 
+                  JavaScript Cebu hosts local events, workshops, and mentorship programs to help developers 
+                  contribute to open source projects.
+                </p>
+                
+                <div class="objectives">
+                  <h3>Our Objectives</h3>
+                  <div class="objectives-grid">
+                    <div class="objective">
+                      <span class="objective-icon">🎯</span>
+                      <div>
+                        <h4>Learn Git & GitHub</h4>
+                        <p>Master version control and collaboration tools</p>
+                      </div>
+                    </div>
+                    <div class="objective">
+                      <span class="objective-icon">🤝</span>
+                      <div>
+                        <h4>Contribute to Open Source</h4>
+                        <p>Make meaningful contributions to real projects</p>
+                      </div>
+                    </div>
+                    <div class="objective">
+                      <span class="objective-icon">🌟</span>
+                      <div>
+                        <h4>Build Your Portfolio</h4>
+                        <p>Showcase your contributions to potential employers</p>
+                      </div>
+                    </div>
+                    <div class="objective">
+                      <span class="objective-icon">👥</span>
+                      <div>
+                        <h4>Network with Developers</h4>
+                        <p>Connect with like-minded individuals</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="about-visual">
+                <ImagePlaceholder height="400px" pattern="circles">
+                  <div class="visual-content">
+                    <span style="font-size: 8rem;">🎃</span>
+                    <span style="font-size: 1rem; margin-top: 1rem;">Hacktoberfest 2024</span>
+                  </div>
+                </ImagePlaceholder>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Schedule -->
+    <section class="section-alt" id="schedule">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Program</span>
+          <h2>4-Week Schedule</h2>
+        </div>
+        
+        <BentoGrid>
+          {schedule.map((week, index) => (
+            <BentoCard class="col-span-3" variant={index === 3 ? 'gradient' : 'default'}>
+              <div class="schedule-card">
+                <div class="week-header">
+                  <span class="week-number">{week.week}</span>
+                  <span class="week-theme">{week.theme}</span>
+                </div>
+                <div class="activities">
+                  <h4>Activities</h4>
+                  <ul>
+                    {week.activities.map(activity => (
+                      <li>{activity}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </BentoCard>
+          ))}
+
+          <!-- Registration CTA -->
+          <BentoCard class="col-span-6" variant="primary">
+            <div class="register-cta">
+              <h3>Ready to Join?</h3>
+              <p>Registration is free and open to all skill levels</p>
+              <div class="register-actions">
+                <a href="#" class="btn btn-dark">Register as Individual</a>
+                <a href="#" class="btn btn-secondary">Register a Team</a>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- How to Participate -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Guide</span>
+          <h2>How to Participate</h2>
+        </div>
+        
+        <BentoGrid>
+          <BentoCard class="col-span-6">
+            <div class="participation-steps">
+              <div class="step-item">
+                <div class="step-icon">1️⃣</div>
+                <div class="step-content">
+                  <h4>Register on Official Website</h4>
+                  <p>Sign up on hacktoberfest.com and our local event page</p>
+                </div>
+              </div>
+              
+              <div class="step-item">
+                <div class="step-icon">2️⃣</div>
+                <div class="step-content">
+                  <h4>Join Our Discord</h4>
+                  <p>Connect with mentors and fellow participants</p>
+                </div>
+              </div>
+              
+              <div class="step-item">
+                <div class="step-icon">3️⃣</div>
+                <div class="step-content">
+                  <h4>Find Projects</h4>
+                  <p>Browse issues labeled "hacktoberfest" or "good first issue"</p>
+                </div>
+              </div>
+              
+              <div class="step-item">
+                <div class="step-icon">4️⃣</div>
+                <div class="step-content">
+                  <h4>Make Pull Requests</h4>
+                  <p>Submit at least 4 quality PRs during October</p>
+                </div>
+              </div>
+              
+              <div class="step-item">
+                <div class="step-icon">5️⃣</div>
+                <div class="step-content">
+                  <h4>Attend Events</h4>
+                  <p>Join workshops, coding sessions, and the final hackathon</p>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Prizes & Recognition -->
+    <section class="section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Rewards</span>
+          <h2>Prizes & Recognition</h2>
+        </div>
+        
+        <BentoGrid>
+          {prizes.map(prize => (
+            <BentoCard class="col-span-2" variant={prize.tier === 'Gold' ? 'gradient' : 'default'}>
+              <div class="prize-card">
+                <span class="prize-icon">{prize.icon}</span>
+                <h3>{prize.tier} Tier</h3>
+                <p class="requirement">{prize.requirement}</p>
+                <div class="prize-details">
+                  <h5>Rewards:</h5>
+                  <p>{prize.prize}</p>
+                </div>
+              </div>
+            </BentoCard>
+          ))}
+
+          <!-- Special Awards -->
+          <BentoCard class="col-span-6">
+            <div class="special-awards">
+              <h3>Special Recognition</h3>
+              <div class="awards-grid">
+                <div class="award">
+                  <span class="award-icon">🌟</span>
+                  <h5>Best First Timer</h5>
+                  <p>For outstanding first-time contributor</p>
+                </div>
+                <div class="award">
+                  <span class="award-icon">🚀</span>
+                  <h5>Most Impactful PR</h5>
+                  <p>For the most valuable contribution</p>
+                </div>
+                <div class="award">
+                  <span class="award-icon">💡</span>
+                  <h5>Innovation Award</h5>
+                  <p>For creative problem solving</p>
+                </div>
+                <div class="award">
+                  <span class="award-icon">🤝</span>
+                  <h5>Best Mentor</h5>
+                  <p>For exceptional guidance and support</p>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Past Events Stats -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">History</span>
+          <h2>Past Hacktoberfests</h2>
+        </div>
+        
+        <BentoGrid>
+          <BentoCard class="col-span-6">
+            <div class="stats-chart">
+              <h3>Growth Over the Years</h3>
+              <div class="chart-container">
+                <div class="chart-bars">
+                  {pastStats.map(stat => (
+                    <div class="chart-year">
+                      <div class="bars">
+                        <div class="bar participants" style={`height: ${stat.participants / 2}px`}>
+                          <span class="bar-value">{stat.participants}</span>
+                        </div>
+                        <div class="bar prs" style={`height: ${stat.prs / 8}px`}>
+                          <span class="bar-value">{stat.prs}</span>
+                        </div>
+                      </div>
+                      <span class="year-label">{stat.year}</span>
+                    </div>
+                  ))}
+                </div>
+                <div class="chart-legend">
+                  <span class="legend-item participants">Participants</span>
+                  <span class="legend-item prs">Pull Requests</span>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          <!-- Success Stories -->
+          <BentoCard class="col-span-3" variant="blue">
+            <div class="success-story">
+              <h3>Success Story</h3>
+              <blockquote>
+                "Hacktoberfest 2023 was my first open source contribution. 
+                I went from zero PRs to maintaining my own project. 
+                The mentorship and community support were incredible!"
+              </blockquote>
+              <div class="story-author">
+                <ImagePlaceholder width="50px" height="50px" pattern="circles">
+                  <span>👩‍💻</span>
+                </ImagePlaceholder>
+                <div>
+                  <span class="author-name">Maria Santos</span>
+                  <span class="author-title">2023 Gold Tier Winner</span>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          <!-- Community Impact -->
+          <BentoCard class="col-span-3" variant="green">
+            <div class="impact-card">
+              <h3>Community Impact</h3>
+              <div class="impact-stats">
+                <div class="impact-stat">
+                  <span class="impact-number">2,200+</span>
+                  <span class="impact-label">Total PRs</span>
+                </div>
+                <div class="impact-stat">
+                  <span class="impact-number">580+</span>
+                  <span class="impact-label">Total Participants</span>
+                </div>
+                <div class="impact-stat">
+                  <span class="impact-number">114</span>
+                  <span class="impact-label">Projects Contributed</span>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Sponsors & Partners -->
+    <section class="section-alt">
+      <div class="container">
+        <BentoGrid>
+          <BentoCard class="col-span-6">
+            <div class="sponsors-section">
+              <h3>Event Partners</h3>
+              <p>These amazing organizations make Hacktoberfest Cebu possible</p>
+              <div class="sponsors-grid">
+                <div class="sponsor">
+                  <ImagePlaceholder width="120px" height="80px" pattern="dots" />
+                  <span>DigitalOcean</span>
+                </div>
+                <div class="sponsor">
+                  <ImagePlaceholder width="120px" height="80px" pattern="lines" />
+                  <span>GitHub</span>
+                </div>
+                <div class="sponsor">
+                  <ImagePlaceholder width="120px" height="80px" pattern="grid" />
+                  <span>JetBrains</span>
+                </div>
+                <div class="sponsor">
+                  <ImagePlaceholder width="120px" height="80px" pattern="waves" />
+                  <span>MLH</span>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          <!-- Final CTA -->
+          <BentoCard class="col-span-6" variant="gradient">
+            <div class="final-cta">
+              <h2>Join Hacktoberfest 2024</h2>
+              <p>Be part of Cebu's biggest open source celebration</p>
+              <div class="cta-countdown">
+                <span class="countdown-label">Event starts in:</span>
+                <span class="countdown-time">30 days</span>
+              </div>
+              <a href="https://hacktoberfest.jscebu.org" class="btn btn-dark btn-large">
+                Register Now
+              </a>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    padding: var(--space-3xl) 0;
+    background: linear-gradient(135deg, 
+      color-mix(in srgb, #FF6B35 20%, var(--color-bg)),
+      color-mix(in srgb, #F7931E 10%, var(--color-bg)));
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 107, 53, 0.03) 10px,
+      rgba(255, 107, 53, 0.03) 20px
+    );
+    animation: slide 20s linear infinite;
+  }
+
+  @keyframes slide {
+    to { transform: translate(20px, 20px); }
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-icon {
+    font-size: 5rem;
+    margin-bottom: var(--space-md);
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 7vw, 5rem);
+    font-weight: 800;
+    margin-bottom: var(--space-md);
+  }
+
+  .highlight {
+    background: linear-gradient(135deg, #FF6B35, #F7931E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-description {
+    font-size: 1.375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-xl);
+  }
+
+  .date-badge {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: color-mix(in srgb, #FF6B35 20%, var(--color-bg));
+    border: 2px solid #FF6B35;
+    border-radius: var(--radius-2xl);
+    font-weight: 600;
+    color: #FF6B35;
+    margin-bottom: var(--space-xl);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+  }
+
+  /* Sections */
+  .section {
+    padding: var(--space-3xl) 0;
+  }
+
+  .section-alt {
+    padding: var(--space-3xl) 0;
+    background: var(--color-bg-secondary);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .section-label {
+    display: inline-block;
+    padding: 0.375rem 1rem;
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-radius: var(--radius-2xl);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+  }
+
+  /* About Section */
+  .about-section {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
+  }
+
+  .about-content h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  .lead {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-xl);
+  }
+
+  .objectives {
+    margin-top: var(--space-xl);
+  }
+
+  .objectives h3 {
+    margin-bottom: var(--space-lg);
+  }
+
+  .objectives-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .objective {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  .objective-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .objective h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1rem;
+  }
+
+  .objective p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .visual-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  /* Schedule Cards */
+  .schedule-card {
+    height: 100%;
+  }
+
+  .week-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .week-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-yellow);
+  }
+
+  .bento-card.gradient .week-number {
+    color: var(--color-black);
+  }
+
+  .week-theme {
+    padding: 0.375rem 0.75rem;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .bento-card.gradient .week-theme {
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--color-black);
+  }
+
+  .activities h4 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .activities ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .activities li {
+    padding: var(--space-xs) 0;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .activities li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-yellow);
+  }
+
+  .bento-card.gradient .activities li::before {
+    color: var(--color-black);
+  }
+
+  /* Register CTA */
+  .register-cta {
+    text-align: center;
+    padding: var(--space-lg);
+  }
+
+  .register-cta h3 {
+    color: var(--color-black);
+    margin-bottom: var(--space-sm);
+  }
+
+  .register-cta p {
+    color: var(--color-black);
+    opacity: 0.8;
+    margin-bottom: var(--space-xl);
+  }
+
+  .register-actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+  }
+
+  /* Participation Steps */
+  .participation-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .step-item {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: flex-start;
+    padding: var(--space-md);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-fast);
+  }
+
+  .step-item:hover {
+    background: var(--color-bg-secondary);
+    transform: translateX(8px);
+  }
+
+  .step-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .step-content h4 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .step-content p {
+    margin: 0;
+    color: var(--color-text-secondary);
+  }
+
+  /* Prize Cards */
+  .prize-card {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .prize-icon {
+    font-size: 4rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .prize-card h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .bento-card.gradient .prize-card h3 {
+    color: var(--color-black);
+  }
+
+  .requirement {
+    font-weight: 600;
+    margin-bottom: var(--space-lg);
+  }
+
+  .bento-card.gradient .requirement {
+    color: var(--color-black);
+    opacity: 0.9;
+  }
+
+  .prize-details {
+    margin-top: auto;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+    width: 100%;
+  }
+
+  .bento-card.gradient .prize-details {
+    border-top-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .prize-details h5 {
+    margin-bottom: var(--space-xs);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .prize-details p {
+    margin: 0;
+  }
+
+  .bento-card.gradient .prize-details p {
+    color: var(--color-black);
+  }
+
+  /* Special Awards */
+  .special-awards {
+    padding: var(--space-lg);
+  }
+
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  .award {
+    text-align: center;
+  }
+
+  .award-icon {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .award h5 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .award p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* Stats Chart */
+  .chart-container {
+    margin-top: var(--space-xl);
+  }
+
+  .chart-bars {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 200px;
+    margin-bottom: var(--space-md);
+  }
+
+  .chart-year {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+
+  .bars {
+    display: flex;
+    gap: var(--space-xs);
+    align-items: flex-end;
+  }
+
+  .bar {
+    width: 40px;
+    background: var(--color-yellow);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    position: relative;
+    transition: all var(--transition-fast);
+  }
+
+  .bar.participants {
+    background: var(--color-blue);
+  }
+
+  .bar.prs {
+    background: var(--color-green);
+  }
+
+  .bar:hover {
+    transform: scaleY(1.1);
+  }
+
+  .bar-value {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .year-label {
+    margin-top: var(--space-sm);
+    font-weight: 600;
+  }
+
+  .chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .legend-item::before {
+    content: '';
+    width: 20px;
+    height: 10px;
+    border-radius: var(--radius-sm);
+  }
+
+  .legend-item.participants::before {
+    background: var(--color-blue);
+  }
+
+  .legend-item.prs::before {
+    background: var(--color-green);
+  }
+
+  /* Success Story */
+  .success-story {
+    padding: var(--space-lg);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .success-story h3 {
+    color: var(--color-white);
+    margin-bottom: var(--space-lg);
+  }
+
+  .success-story blockquote {
+    flex: 1;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-white);
+    opacity: 0.9;
+    font-style: italic;
+    margin-bottom: var(--space-lg);
+  }
+
+  .story-author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .author-name {
+    display: block;
+    font-weight: 600;
+    color: var(--color-white);
+  }
+
+  .author-title {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-white);
+    opacity: 0.8;
+  }
+
+  /* Impact Card */
+  .impact-card {
+    padding: var(--space-lg);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .impact-card h3 {
+    color: var(--color-white);
+    margin-bottom: var(--space-xl);
+    text-align: center;
+  }
+
+  .impact-stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .impact-stat {
+    text-align: center;
+  }
+
+  .impact-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-white);
+    margin-bottom: var(--space-xs);
+  }
+
+  .impact-label {
+    font-size: 0.875rem;
+    color: var(--color-white);
+    opacity: 0.9;
+  }
+
+  /* Sponsors */
+  .sponsors-section {
+    text-align: center;
+    padding: var(--space-lg);
+  }
+
+  .sponsors-section p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-xl);
+  }
+
+  .sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .sponsor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .sponsor span {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  /* Final CTA */
+  .final-cta {
+    text-align: center;
+    padding: var(--space-xl);
+  }
+
+  .final-cta h2 {
+    color: var(--color-black);
+    margin-bottom: var(--space-sm);
+  }
+
+  .final-cta p {
+    color: var(--color-black);
+    opacity: 0.8;
+    margin-bottom: var(--space-xl);
+  }
+
+  .cta-countdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+  }
+
+  .countdown-label {
+    font-size: 0.875rem;
+    color: var(--color-black);
+    opacity: 0.7;
+    text-transform: uppercase;
+  }
+
+  .countdown-time {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-black);
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    transition: all var(--transition-base);
+    display: inline-block;
+    text-decoration: none;
+    border: 2px solid transparent;
+  }
+
+  .btn-primary {
+    background: #FF6B35;
+    color: var(--color-white);
+    border-color: #FF6B35;
+  }
+
+  .btn-primary:hover {
+    background: #E55525;
+    border-color: #E55525;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-text);
+    border-color: var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-bg-secondary);
+    border-color: var(--color-text);
+  }
+
+  .btn-dark {
+    background: var(--color-black);
+    color: var(--color-white);
+    border-color: var(--color-black);
+  }
+
+  .btn-dark:hover {
+    background: var(--color-gray-800);
+    border-color: var(--color-gray-800);
+    transform: translateY(-2px);
+  }
+
+  .btn-large {
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .about-section {
+      grid-template-columns: 1fr;
+    }
+
+    .about-visual {
+      display: none;
+    }
+
+    .objectives-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .awards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .register-actions {
+      flex-direction: column;
+    }
+
+    .sponsors-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

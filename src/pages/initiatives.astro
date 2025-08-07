@@ -1,0 +1,823 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import BentoCard from '../components/BentoCard.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+
+const mainInitiatives = [
+  {
+    title: 'Annual Hacktoberfest',
+    description: 'Month-long celebration of open source with workshops, mentorship, and collaborative coding',
+    icon: '🎃',
+    schedule: 'Every October',
+    impact: '200+ participants',
+    highlights: ['Team projects', 'Mentorship', 'Prizes', 'Workshops']
+  },
+  {
+    title: 'Developer Workshops',
+    description: 'Hands-on learning sessions covering modern web technologies and best practices',
+    icon: '🎓',
+    schedule: 'Bi-weekly',
+    impact: '50+ per session',
+    highlights: ['Live coding', 'Q&A sessions', 'Take-home projects', 'Certificates']
+  },
+  {
+    title: 'Testing Bootcamp',
+    description: 'Comprehensive training on automated testing, TDD, and quality assurance',
+    icon: '🧪',
+    schedule: 'Quarterly',
+    impact: '30+ graduates',
+    highlights: ['Unit testing', 'E2E testing', 'CI/CD', 'Best practices']
+  }
+];
+
+const upcomingPrograms = [
+  {
+    title: 'Web3 Workshop Series',
+    date: 'Starting January 2025',
+    type: 'workshop',
+    duration: '8 weeks'
+  },
+  {
+    title: 'Mobile Dev Bootcamp',
+    date: 'February 2025',
+    type: 'bootcamp',
+    duration: '4 weeks'
+  },
+  {
+    title: 'AI/ML for JS Developers',
+    date: 'March 2025',
+    type: 'workshop',
+    duration: '6 weeks'
+  }
+];
+
+const pastInitiatives = [
+  {
+    title: 'Code Review Sessions',
+    participants: 150,
+    sessions: 12,
+    year: 2024
+  },
+  {
+    title: 'Mentorship Program',
+    participants: 80,
+    sessions: 24,
+    year: 2024
+  },
+  {
+    title: 'Tech Talks',
+    participants: 500,
+    sessions: 20,
+    year: 2024
+  }
+];
+---
+
+<Layout title="Initiatives">
+  <Navigation />
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-badge">Programs</span>
+          <h1>Community <span class="highlight">Initiatives</span></h1>
+          <p class="hero-description">
+            Structured programs designed to help developers learn, grow, and advance their careers
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Initiatives -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Active Programs</span>
+          <h2>Our Core Initiatives</h2>
+        </div>
+        
+        <BentoGrid>
+          {mainInitiatives.map((initiative, index) => (
+            <BentoCard class="col-span-2 row-span-3" variant={index === 0 ? 'gradient' : 'default'}>
+              <div class="initiative-card">
+                <div class="initiative-header">
+                  <ImagePlaceholder width="80px" height="80px" pattern={index === 0 ? 'circles' : index === 1 ? 'dots' : 'grid'}>
+                    <span style="font-size: 3rem;">{initiative.icon}</span>
+                  </ImagePlaceholder>
+                  <span class="schedule-badge">{initiative.schedule}</span>
+                </div>
+                <h3>{initiative.title}</h3>
+                <p>{initiative.description}</p>
+                
+                <div class="highlights">
+                  <h4>Program Highlights</h4>
+                  <div class="highlight-list">
+                    {initiative.highlights.map(highlight => (
+                      <span class="highlight-item">✓ {highlight}</span>
+                    ))}
+                  </div>
+                </div>
+                
+                <div class="initiative-footer">
+                  <div class="impact">
+                    <span class="impact-icon">👥</span>
+                    <span>{initiative.impact}</span>
+                  </div>
+                  <a href={initiative.title === 'Annual Hacktoberfest' ? '/annual-hacktoberfest' : '#'} class="learn-more">
+                    Learn more →
+                  </a>
+                </div>
+              </div>
+            </BentoCard>
+          ))}
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Process</span>
+          <h2>How to Get Involved</h2>
+        </div>
+        
+        <BentoGrid>
+          <BentoCard class="col-span-6">
+            <div class="process-timeline">
+              <div class="timeline-item">
+                <div class="timeline-marker">1</div>
+                <div class="timeline-content">
+                  <h4>Join the Community</h4>
+                  <p>Sign up and connect with us on social media platforms</p>
+                </div>
+              </div>
+              <div class="timeline-connector"></div>
+              <div class="timeline-item">
+                <div class="timeline-marker">2</div>
+                <div class="timeline-content">
+                  <h4>Choose Your Path</h4>
+                  <p>Select initiatives that match your interests and skill level</p>
+                </div>
+              </div>
+              <div class="timeline-connector"></div>
+              <div class="timeline-item">
+                <div class="timeline-marker">3</div>
+                <div class="timeline-content">
+                  <h4>Register & Attend</h4>
+                  <p>Sign up for programs and attend sessions regularly</p>
+                </div>
+              </div>
+              <div class="timeline-connector"></div>
+              <div class="timeline-item">
+                <div class="timeline-marker">4</div>
+                <div class="timeline-content">
+                  <h4>Apply & Share</h4>
+                  <p>Implement what you learn and share with the community</p>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Upcoming Programs -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Coming Soon</span>
+          <h2>Upcoming Programs</h2>
+        </div>
+        
+        <BentoGrid>
+          {upcomingPrograms.map(program => (
+            <BentoCard class="col-span-2">
+              <div class="upcoming-card">
+                <div class="program-type">{program.type}</div>
+                <h4>{program.title}</h4>
+                <div class="program-details">
+                  <div class="detail">
+                    <span class="detail-icon">📅</span>
+                    <span>{program.date}</span>
+                  </div>
+                  <div class="detail">
+                    <span class="detail-icon">⏱️</span>
+                    <span>{program.duration}</span>
+                  </div>
+                </div>
+                <button class="notify-btn">Get Notified</button>
+              </div>
+            </BentoCard>
+          ))}
+
+          <BentoCard class="col-span-6" variant="primary">
+            <div class="suggest-card">
+              <h3>Have an Idea?</h3>
+              <p>We're always looking for new initiatives to help our community grow. Share your ideas with us!</p>
+              <a href="/official-links" class="btn btn-dark">Suggest an Initiative</a>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Impact & Stats -->
+    <section class="section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Impact</span>
+          <h2>2024 Initiative Results</h2>
+        </div>
+        
+        <BentoGrid>
+          <!-- Overall Stats -->
+          <BentoCard class="col-span-3 row-span-2">
+            <div class="year-stats">
+              <h3>Year in Review</h3>
+              <div class="stats-grid">
+                <div class="stat-item">
+                  <span class="stat-value">24</span>
+                  <span class="stat-label">Total Programs</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-value">850+</span>
+                  <span class="stat-label">Participants</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-value">150+</span>
+                  <span class="stat-label">Hours of Content</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-value">95%</span>
+                  <span class="stat-label">Satisfaction Rate</span>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          <!-- Past Initiatives -->
+          <BentoCard class="col-span-3">
+            <div class="past-programs">
+              <h3>Completed Programs</h3>
+              <div class="program-list">
+                {pastInitiatives.map(program => (
+                  <div class="past-program">
+                    <div class="program-info">
+                      <h5>{program.title}</h5>
+                      <span class="program-year">{program.year}</span>
+                    </div>
+                    <div class="program-stats">
+                      <span>{program.participants} participants</span>
+                      <span>•</span>
+                      <span>{program.sessions} sessions</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </BentoCard>
+
+          <!-- Testimonial -->
+          <BentoCard class="col-span-6" variant="gradient">
+            <div class="testimonial">
+              <blockquote>
+                "The Testing Bootcamp completely transformed how I approach software quality. 
+                I went from manual testing to implementing comprehensive test suites in just 4 weeks!"
+              </blockquote>
+              <div class="testimonial-author">
+                <ImagePlaceholder width="50px" height="50px" pattern="circles">
+                  <span>👨‍💻</span>
+                </ImagePlaceholder>
+                <div>
+                  <span class="author-name">John Developer</span>
+                  <span class="author-role">Bootcamp Graduate</span>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Partners & Sponsors -->
+    <section class="section">
+      <div class="container">
+        <BentoGrid>
+          <BentoCard class="col-span-6">
+            <div class="sponsors-section">
+              <h3>Initiative Partners</h3>
+              <p>These organizations help make our programs possible</p>
+              <div class="sponsors-grid">
+                <div class="sponsor">
+                  <ImagePlaceholder width="100%" height="60px" pattern="dots" />
+                  <span>Tech Corp</span>
+                </div>
+                <div class="sponsor">
+                  <ImagePlaceholder width="100%" height="60px" pattern="lines" />
+                  <span>Dev Studio</span>
+                </div>
+                <div class="sponsor">
+                  <ImagePlaceholder width="100%" height="60px" pattern="grid" />
+                  <span>Code Lab</span>
+                </div>
+                <div class="sponsor">
+                  <ImagePlaceholder width="100%" height="60px" pattern="waves" />
+                  <span>Innovation Hub</span>
+                </div>
+              </div>
+              <a href="#" class="partner-cta">Become a Partner →</a>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    background: linear-gradient(135deg, 
+      color-mix(in srgb, var(--color-blue) 10%, var(--color-bg)),
+      var(--color-bg));
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: color-mix(in srgb, var(--color-blue) 15%, var(--color-bg));
+    border: 1px solid var(--color-blue);
+    border-radius: var(--radius-2xl);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-blue);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: var(--space-md);
+  }
+
+  .highlight {
+    background: linear-gradient(135deg, var(--color-blue), var(--color-blue-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Sections */
+  .section {
+    padding: var(--space-3xl) 0;
+  }
+
+  .section-alt {
+    padding: var(--space-3xl) 0;
+    background: var(--color-bg-secondary);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .section-label {
+    display: inline-block;
+    padding: 0.375rem 1rem;
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-radius: var(--radius-2xl);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+  }
+
+  .section-header h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  /* Initiative Cards */
+  .initiative-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .initiative-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-lg);
+  }
+
+  .schedule-badge {
+    padding: 0.375rem 0.75rem;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .bento-card.gradient .schedule-badge {
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--color-black);
+  }
+
+  .initiative-card h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .initiative-card > p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-lg);
+  }
+
+  .bento-card.gradient .initiative-card > p {
+    color: var(--color-black);
+    opacity: 0.8;
+  }
+
+  .highlights {
+    flex: 1;
+    margin-bottom: var(--space-lg);
+  }
+
+  .highlights h4 {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+    opacity: 0.7;
+  }
+
+  .highlight-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .highlight-item {
+    font-size: 0.875rem;
+  }
+
+  .bento-card.gradient .highlight-item {
+    color: var(--color-black);
+  }
+
+  .initiative-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .bento-card.gradient .initiative-footer {
+    border-top-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .impact {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.875rem;
+  }
+
+  .learn-more {
+    color: var(--color-yellow);
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform var(--transition-fast);
+  }
+
+  .bento-card.gradient .learn-more {
+    color: var(--color-black);
+  }
+
+  .learn-more:hover {
+    transform: translateX(4px);
+  }
+
+  /* Process Timeline */
+  .process-timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-xl) 0;
+  }
+
+  .timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+  }
+
+  .timeline-marker {
+    width: 60px;
+    height: 60px;
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+  }
+
+  .timeline-connector {
+    flex: 0.5;
+    height: 2px;
+    background: var(--color-border);
+    margin: 0 var(--space-md);
+    align-self: flex-start;
+    margin-top: 30px;
+  }
+
+  .timeline-content h4 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .timeline-content p {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* Upcoming Cards */
+  .upcoming-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .program-type {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: fit-content;
+    margin-bottom: var(--space-md);
+  }
+
+  .upcoming-card h4 {
+    margin-bottom: var(--space-md);
+    flex: 1;
+  }
+
+  .program-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  .detail {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .notify-btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .notify-btn:hover {
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-color: var(--color-yellow);
+  }
+
+  /* Suggest Card */
+  .suggest-card {
+    text-align: center;
+    padding: var(--space-lg);
+  }
+
+  .suggest-card h3 {
+    color: var(--color-black);
+    margin-bottom: var(--space-sm);
+  }
+
+  .suggest-card p {
+    color: var(--color-black);
+    opacity: 0.8;
+    margin-bottom: var(--space-lg);
+  }
+
+  /* Year Stats */
+  .year-stats {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-yellow);
+    margin-bottom: var(--space-xs);
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* Past Programs */
+  .program-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .past-program {
+    padding: var(--space-md);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+  }
+
+  .program-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-xs);
+  }
+
+  .program-info h5 {
+    margin: 0;
+  }
+
+  .program-year {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .program-stats {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* Testimonial */
+  .testimonial {
+    text-align: center;
+    padding: var(--space-xl);
+  }
+
+  .testimonial blockquote {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--color-black);
+    margin-bottom: var(--space-xl);
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+  }
+
+  .author-name {
+    display: block;
+    font-weight: 600;
+    color: var(--color-black);
+  }
+
+  .author-role {
+    font-size: 0.875rem;
+    color: var(--color-black);
+    opacity: 0.7;
+  }
+
+  /* Sponsors */
+  .sponsors-section {
+    text-align: center;
+  }
+
+  .sponsors-section p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-xl);
+  }
+
+  .sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+  }
+
+  .sponsor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .sponsor span {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .partner-cta {
+    color: var(--color-yellow);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    transition: all var(--transition-base);
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .btn-dark {
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .btn-dark:hover {
+    background: var(--color-gray-800);
+    transform: translateY(-2px);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .process-timeline {
+      flex-direction: column;
+    }
+
+    .timeline-connector {
+      width: 2px;
+      height: 40px;
+      margin: var(--space-md) 0;
+      align-self: center;
+    }
+
+    .sponsors-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

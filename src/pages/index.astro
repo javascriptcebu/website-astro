@@ -1,11 +1,987 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import BentoGrid from "../components/BentoGrid.astro";
+import BentoCard from "../components/BentoCard.astro";
+import ImagePlaceholder from "../components/ImagePlaceholder.astro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Home">
+  <Navigation />
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">Welcome to the community</div>
+          <h1 class="hero-title">JavaScript Cebu</h1>
+          <p class="hero-description">
+            A thriving ecosystem of developers building the future with modern
+            web technologies
+          </p>
+          <div class="hero-actions">
+            <a href="/members" class="btn btn-primary">
+              <span>Join 1.8k+ Members</span>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+            <a href="/events" class="btn btn-secondary">
+              <span>Explore Events</span>
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="floating-card card-1">
+            <span class="card-icon"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="18"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M185.7 268.1h76.2l-38.1-91.6zM223.8 32L16 106.4l31.8 275.7l176 97.9l176-97.9l31.8-275.7zM354 373.8h-48.6l-26.2-65.4H168.6l-26.2 65.4H93.7L223.8 81.5z"
+                ></path></svg
+              ></span
+            >
+            <span class="card-label">Angular</span>
+          </div>
+          <div class="floating-card card-2">
+            <span class="card-icon">🍀</span>
+            <span class="card-label">Vue.js</span>
+          </div>
+          <div class="floating-card card-3">
+            <span class="card-icon">⚛️</span>
+            <span class="card-label">React</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Stats Section -->
+    <section class="section-alt">
+      <div class="container">
+        <BentoGrid>
+          <!-- Mission Statement -->
+          <BentoCard class="col-span-4 row-span-2">
+            <div class="mission-card">
+              <div class="mission-content">
+                <span class="section-label">Our Mission</span>
+                <h2>Empowering developers through collaboration</h2>
+                <p>
+                  We unite developers by providing a collaborative platform for
+                  learning, sharing, and innovation in JavaScript and related
+                  technologies.
+                </p>
+                <div class="mission-values">
+                  <div class="value">
+                    <span class="value-icon">🎯</span>
+                    <span>Learning</span>
+                  </div>
+                  <div class="value">
+                    <span class="value-icon">🤝</span>
+                    <span>Sharing</span>
+                  </div>
+                  <div class="value">
+                    <span class="value-icon">🚀</span>
+                    <span>Innovation</span>
+                  </div>
+                </div>
+              </div>
+              <ImagePlaceholder
+                height="100%"
+                pattern="waves"
+                class="mission-visual"
+              />
+            </div>
+          </BentoCard>
+
+          <!-- Stats Cards -->
+          <BentoCard class="col-span-2" variant="primary">
+            <div class="stat-card">
+              <span class="stat-number">1.8k+</span>
+              <span class="stat-label">Active Members</span>
+              <div class="stat-growth">+23% this year</div>
+            </div>
+          </BentoCard>
+
+          <BentoCard class="col-span-2" variant="gradient">
+            <div class="stat-card">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Events Hosted</span>
+              <div class="stat-growth">Monthly meetups</div>
+            </div>
+          </BentoCard>
+
+          <BentoCard class="col-span-2">
+            <div class="stat-card">
+              <span class="stat-number">3</span>
+              <span class="stat-label">Sub-communities</span>
+              <div class="stat-growth">React, Vue, Angular</div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Featured Event Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Upcoming</span>
+          <h2>Featured Event</h2>
+        </div>
+
+        <BentoGrid>
+          <BentoCard class="col-span-6 row-span-2">
+            <div class="featured-event">
+              <div class="event-content">
+                <div class="event-badge">Hackathon</div>
+                <h3>Hacktoberfest 2024</h3>
+                <p>
+                  Join us for a month-long celebration of open source.
+                  Contribute to projects, win prizes, and level up your skills
+                  with the community.
+                </p>
+
+                <div class="event-info">
+                  <div class="info-item">
+                    <span class="info-label">Date</span>
+                    <span class="info-value">October 5, 2024</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Time</span>
+                    <span class="info-value">2:00 PM - 6:00 PM</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Location</span>
+                    <span class="info-value">Cebu IT Park</span>
+                  </div>
+                </div>
+
+                <a href="/events" class="btn btn-primary">Register Now</a>
+              </div>
+              <div class="event-visual">
+                <ImagePlaceholder height="300px" pattern="circles">
+                  <span style="font-size: 6rem;">🎃</span>
+                </ImagePlaceholder>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Communities Section -->
+    <section class="section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Sub-communities</span>
+          <h2>Find Your Tribe</h2>
+          <p>
+            Join specialized groups focused on your favorite JavaScript
+            framework
+          </p>
+        </div>
+
+        <BentoGrid>
+          <BentoCard
+            class="col-span-2 row-span-2"
+            variant="blue"
+            href="/members"
+          >
+            <div class="community-card">
+              <ImagePlaceholder height="150px" pattern="dots">
+                <span style="font-size: 4rem;">⚛️</span>
+              </ImagePlaceholder>
+              <div class="community-info">
+                <h3>React Cebu</h3>
+                <p>Build modern, interactive UIs with the power of React</p>
+                <div class="community-stats">
+                  <span>600+ members</span>
+                  <span>•</span>
+                  <span>Weekly meetups</span>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          <BentoCard
+            class="col-span-2 row-span-2"
+            variant="green"
+            href="/members"
+          >
+            <div class="community-card">
+              <ImagePlaceholder height="150px" pattern="grid">
+                <span style="font-size: 4rem;">🍀</span>
+              </ImagePlaceholder>
+              <div class="community-info">
+                <h3>Vue.js Cebu</h3>
+                <p>Progressive framework for building user interfaces</p>
+                <div class="community-stats">
+                  <span>450+ members</span>
+                  <span>•</span>
+                  <span>Monthly workshops</span>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          <BentoCard
+            class="col-span-2 row-span-2"
+            variant="red"
+            href="/members"
+          >
+            <div class="community-card">
+              <ImagePlaceholder height="150px" pattern="lines">
+                <span style="font-size: 4rem;">🅰️</span>
+              </ImagePlaceholder>
+              <div class="community-info">
+                <h3>Angular Cebu</h3>
+                <p>Enterprise-ready applications with Angular</p>
+                <div class="community-stats">
+                  <span>350+ members</span>
+                  <span>•</span>
+                  <span>Bi-weekly sessions</span>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Initiatives & Projects Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">What We Do</span>
+          <h2>Community Initiatives</h2>
+        </div>
+
+        <BentoGrid>
+          <!-- Initiatives Overview -->
+          <BentoCard class="col-span-3 row-span-2" href="/initiatives">
+            <div class="initiatives-card">
+              <h3>Active Programs</h3>
+              <p>Regular activities designed to help you grow</p>
+              <div class="initiatives-list">
+                <div class="initiative-item">
+                  <ImagePlaceholder width="60px" height="60px" pattern="dots">
+                    <span style="font-size: 1.5rem;">🎃</span>
+                  </ImagePlaceholder>
+                  <div>
+                    <h4>Annual Hacktoberfest</h4>
+                    <p>Open source contribution fest</p>
+                  </div>
+                </div>
+                <div class="initiative-item">
+                  <ImagePlaceholder width="60px" height="60px" pattern="dots">
+                    <span style="font-size: 1.5rem;">🎓</span>
+                  </ImagePlaceholder>
+                  <div>
+                    <h4>Developer Workshops</h4>
+                    <p>Hands-on learning sessions</p>
+                  </div>
+                </div>
+                <div class="initiative-item">
+                  <ImagePlaceholder width="60px" height="60px" pattern="dots">
+                    <span style="font-size: 1.5rem;">🧪</span>
+                  </ImagePlaceholder>
+                  <div>
+                    <h4>Testing Bootcamp</h4>
+                    <p>Master automated testing</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          <!-- Open Source Projects -->
+          <BentoCard class="col-span-3 row-span-2" href="/community-projects">
+            <div class="projects-card">
+              <h3>Open Source Projects</h3>
+              <p>Contribute to real-world applications</p>
+              <ImagePlaceholder height="120px" pattern="waves">
+                <div class="project-preview">
+                  <span class="project-icon">💻</span>
+                  <span class="project-count">15+ Active Projects</span>
+                </div>
+              </ImagePlaceholder>
+              <div class="tech-stack">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Vue</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">+10</span>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Partners & CTA Section -->
+    <section class="section-alt">
+      <div class="container">
+        <BentoGrid>
+          <!-- Partners -->
+          <BentoCard class="col-span-6">
+            <div class="partners-section">
+              <h3>Trusted by Leading Companies</h3>
+              <div class="partners-grid">
+                <div class="partner-card">
+                  <ImagePlaceholder width="100%" height="80px" pattern="dots" />
+                  <span>Sun Asterisk</span>
+                </div>
+                <div class="partner-card">
+                  <ImagePlaceholder
+                    width="100%"
+                    height="80px"
+                    pattern="lines"
+                  />
+                  <span>LegalMatch</span>
+                </div>
+                <div class="partner-card">
+                  <ImagePlaceholder width="100%" height="80px" pattern="grid" />
+                  <span>enspace Cebu</span>
+                </div>
+                <div class="partner-card">
+                  <ImagePlaceholder
+                    width="100%"
+                    height="80px"
+                    pattern="circles"
+                  />
+                  <span>JetBrains</span>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          <!-- Final CTA -->
+          <BentoCard class="col-span-4" variant="gradient">
+            <div class="cta-final">
+              <h2>Ready to level up?</h2>
+              <p>
+                Join a community that celebrates learning, sharing, and growing
+                together.
+              </p>
+              <div class="cta-actions">
+                <a href="/official-links" class="btn btn-dark">Get Started</a>
+                <a href="/mission-vision" class="link-arrow">Learn more →</a>
+              </div>
+            </div>
+          </BentoCard>
+
+          <!-- Quick Links -->
+          <BentoCard class="col-span-2">
+            <div class="quick-links">
+              <h4>Connect</h4>
+              <div class="links-list">
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">GitHub</a>
+                <a href="#">Discord</a>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+  </main>
 </Layout>
+
+<style>
+  /* Sections */
+  .section {
+    padding: var(--space-3xl) 0;
+    position: relative;
+  }
+
+  .section-alt {
+    padding: var(--space-3xl) 0;
+    background: var(--color-bg-secondary);
+    position: relative;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .section-label {
+    display: inline-block;
+    padding: 0.375rem 1rem;
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-radius: var(--radius-2xl);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+  }
+
+  .section-header h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .section-header p {
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    background: linear-gradient(
+      180deg,
+      var(--color-bg) 0%,
+      color-mix(in srgb, var(--color-yellow) 5%, var(--color-bg)) 100%
+    );
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero .container {
+    position: relative;
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-2xl) 0;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: color-mix(in srgb, var(--color-yellow) 15%, var(--color-bg));
+    border: 1px solid var(--color-yellow);
+    border-radius: var(--radius-2xl);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-yellow);
+    margin-bottom: var(--space-lg);
+    animation: fadeIn 0.6s ease;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 800;
+    line-height: 0.95;
+    margin-bottom: var(--space-lg);
+    background: linear-gradient(
+      135deg,
+      var(--color-text) 0%,
+      var(--color-yellow) 50%,
+      var(--color-text) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: shimmer 3s linear infinite;
+  }
+
+  @keyframes shimmer {
+    to {
+      background-position: 200% center;
+    }
+  }
+
+  .hero-description {
+    font-size: 1.375rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2xl);
+    line-height: 1.6;
+    animation: fadeIn 0.8s ease 0.2s backwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    animation: fadeIn 1s ease 0.4s backwards;
+  }
+
+  .hero-visual {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 1200px;
+    height: 400px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .floating-card {
+    position: absolute;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    box-shadow: var(--shadow-lg);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .floating-card.card-1 {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+
+  .floating-card.card-2 {
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+  }
+
+  .floating-card.card-3 {
+    top: 10%;
+    right: 20%;
+    animation-delay: 4s;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .card-icon {
+    font-size: 1.5rem;
+  }
+
+  .card-label {
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    text-decoration: none;
+    border: 2px solid transparent;
+  }
+
+  .btn-primary {
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-color: var(--color-yellow);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-yellow-dark);
+    border-color: var(--color-yellow-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(244, 208, 63, 0.3);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-text);
+    border-color: var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-bg-secondary);
+    border-color: var(--color-text);
+    transform: translateY(-2px);
+  }
+
+  .btn-dark {
+    background: var(--color-black);
+    color: var(--color-white);
+    border-color: var(--color-black);
+  }
+
+  .btn-dark:hover {
+    background: var(--color-gray-800);
+    border-color: var(--color-gray-800);
+    transform: translateY(-2px);
+  }
+
+  .link-arrow {
+    color: var(--color-text);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .link-arrow:hover {
+    color: var(--color-yellow);
+    transform: translateX(4px);
+  }
+
+  /* Mission Card */
+  .mission-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    height: 100%;
+    align-items: center;
+  }
+
+  .mission-content h2 {
+    font-size: 2rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .mission-values {
+    display: flex;
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+  }
+
+  .value {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+  }
+
+  .value-icon {
+    font-size: 1.25rem;
+  }
+
+  .mission-visual {
+    height: 300px;
+  }
+
+  /* Stat Cards */
+  .stat-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 200px;
+  }
+
+  .stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+    font-family: var(--font-display);
+    margin-bottom: var(--space-xs);
+  }
+
+  .bento-card.primary .stat-number,
+  .bento-card.gradient .stat-number {
+    color: var(--color-black);
+  }
+
+  .stat-label {
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.8;
+    margin-bottom: var(--space-sm);
+  }
+
+  .stat-growth {
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  /* Featured Event */
+  .featured-event {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
+    height: 100%;
+  }
+
+  .event-badge {
+    display: inline-block;
+    padding: 0.375rem 1rem;
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+  }
+
+  .event-content h3 {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .event-info {
+    display: grid;
+    gap: var(--space-md);
+    margin: var(--space-xl) 0;
+    padding: var(--space-lg);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-lg);
+  }
+
+  .info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .info-label {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+  }
+
+  .info-value {
+    font-weight: 600;
+  }
+
+  /* Community Cards */
+  .community-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .community-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .community-info h3 {
+    color: var(--color-white);
+    margin-bottom: var(--space-sm);
+  }
+
+  .community-info p {
+    color: var(--color-white);
+    opacity: 0.9;
+    margin-bottom: var(--space-md);
+    flex: 1;
+  }
+
+  .community-stats {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.875rem;
+    color: var(--color-white);
+    opacity: 0.8;
+  }
+
+  /* Initiatives */
+  .initiatives-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+  }
+
+  .initiative-item {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+  }
+
+  .initiative-item h4 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .initiative-item p {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* Projects */
+  .projects-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .project-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--color-text);
+  }
+
+  .project-icon {
+    font-size: 3rem;
+  }
+
+  .project-count {
+    font-weight: 600;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .tech-tag {
+    padding: 0.375rem 0.875rem;
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+  }
+
+  .tech-tag:hover {
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-color: var(--color-yellow);
+    transform: scale(1.05);
+  }
+
+  /* Partners */
+  .partners-section h3 {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .partner-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+
+  .partner-card span {
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  /* Final CTA */
+  .cta-final {
+    text-align: center;
+    padding: var(--space-lg) 0;
+  }
+
+  .cta-final h2 {
+    color: var(--color-black);
+    margin-bottom: var(--space-sm);
+  }
+
+  .cta-final p {
+    color: var(--color-black);
+    opacity: 0.8;
+    margin-bottom: var(--space-xl);
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Quick Links */
+  .quick-links h4 {
+    margin-bottom: var(--space-md);
+  }
+
+  .links-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .links-list a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    font-weight: 500;
+  }
+
+  .links-list a:hover {
+    color: var(--color-yellow);
+    transform: translateX(4px);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .hero-visual {
+      display: none;
+    }
+
+    .mission-card {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-event {
+      grid-template-columns: 1fr;
+    }
+
+    .event-visual {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .partners-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cta-actions {
+      flex-direction: column;
+    }
+  }
+</style>

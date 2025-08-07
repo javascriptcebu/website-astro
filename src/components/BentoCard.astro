@@ -1,0 +1,117 @@
+---
+export interface Props {
+  class?: string;
+  href?: string;
+  variant?: 'default' | 'primary' | 'blue' | 'green' | 'red' | 'gradient';
+  interactive?: boolean;
+}
+
+const { class: className, href, variant = 'default', interactive = !!href } = Astro.props;
+const Element = href ? 'a' : 'div';
+---
+
+<Element 
+  class={`bento-card ${variant} ${interactive ? 'interactive' : ''} ${className || ''}`} 
+  href={href}
+>
+  <slot />
+</Element>
+
+<style>
+  .bento-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-xl);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    position: relative;
+    transition: all var(--transition-base);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  }
+
+  .bento-card.interactive {
+    cursor: pointer;
+  }
+
+  .bento-card.interactive:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    border-color: transparent;
+  }
+
+  /* Variants */
+  .bento-card.primary {
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-color: var(--color-yellow);
+  }
+
+  .bento-card.blue {
+    background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-blue-light) 100%);
+    color: var(--color-white);
+    border: none;
+  }
+
+  .bento-card.green {
+    background: linear-gradient(135deg, var(--color-green) 0%, var(--color-green-light) 100%);
+    color: var(--color-white);
+    border: none;
+  }
+
+  .bento-card.red {
+    background: linear-gradient(135deg, var(--color-red) 0%, var(--color-red-light) 100%);
+    color: var(--color-white);
+    border: none;
+  }
+
+  .bento-card.gradient {
+    background: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-yellow-light) 50%, var(--color-yellow) 100%);
+    color: var(--color-black);
+    border: none;
+    position: relative;
+  }
+
+  .bento-card.gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+      var(--color-blue) 0%, 
+      var(--color-green) 33%, 
+      var(--color-red) 66%, 
+      var(--color-yellow) 100%);
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+  }
+
+  .bento-card.gradient:hover::before {
+    opacity: 0.1;
+  }
+
+  /* Content styling */
+  .bento-card :global(h3) {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .bento-card :global(p) {
+    flex: 1;
+    opacity: 0.9;
+  }
+
+  .bento-card.primary :global(p),
+  .bento-card.blue :global(p),
+  .bento-card.green :global(p),
+  .bento-card.red :global(p) {
+    color: currentColor;
+    opacity: 0.9;
+  }
+
+  /* Remove default link styles */
+  a.bento-card {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>

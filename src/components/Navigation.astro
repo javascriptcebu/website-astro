@@ -1,0 +1,261 @@
+---
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/mission-vision' },
+  { label: 'Members', href: '/members' },
+  { label: 'Events', href: '/events' },
+  { label: 'Projects', href: '/community-projects' },
+  { label: 'Initiatives', href: '/initiatives' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header">
+  <nav class="nav container">
+    <a href="/" class="logo">
+      <svg width="40" height="40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="160" height="160" rx="30" fill="var(--color-yellow)" />
+        <path d="M60 80 Q80 60 100 80 T140 80" stroke="var(--color-blue)" stroke-width="8" fill="var(--color-blue)" opacity="0.8" />
+        <path d="M100 80 L140 140 L100 120 Z" fill="var(--color-green)" opacity="0.8" />
+        <path d="M60 140 Q80 120 100 140 T140 140" stroke="var(--color-red)" stroke-width="8" fill="var(--color-red)" opacity="0.8" />
+      </svg>
+      <span>JS Cebu</span>
+    </a>
+
+    <button class="mobile-toggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-list">
+      {navItems.map(item => (
+        <li>
+          <a 
+            href={item.href} 
+            class={currentPath === item.href ? 'active' : ''}
+            aria-current={currentPath === item.href ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="nav-actions">
+      <a href="/official-links" class="social-link" aria-label="Social Links">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+        </svg>
+      </a>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--color-bg) 80%, transparent);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+    gap: var(--space-lg);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-text);
+    transition: transform var(--transition-fast);
+  }
+
+  .logo:hover {
+    transform: scale(1.05);
+  }
+
+  .logo svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .mobile-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--color-text);
+    transition: all var(--transition-fast);
+  }
+
+  .nav-list {
+    display: flex;
+    gap: var(--space-xs);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-list a {
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    position: relative;
+  }
+
+  .nav-list a:hover {
+    color: var(--color-text);
+    background: var(--color-bg-secondary);
+  }
+
+  .nav-list a.active {
+    color: var(--color-yellow);
+    background: color-mix(in srgb, var(--color-yellow) 10%, transparent);
+  }
+
+  .nav-list a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: var(--space-sm);
+    right: var(--space-sm);
+    height: 2px;
+    background: var(--color-yellow);
+    border-radius: 2px;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .social-link,
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .social-link:hover,
+  .theme-toggle:hover {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text);
+    transform: translateY(-2px);
+  }
+
+  .theme-toggle .sun,
+  .theme-toggle .moon {
+    position: absolute;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+  }
+
+  [data-theme="light"] .theme-toggle .sun {
+    opacity: 1;
+    transform: rotate(0);
+  }
+
+  [data-theme="light"] .theme-toggle .moon {
+    opacity: 0;
+    transform: rotate(180deg);
+  }
+
+  [data-theme="dark"] .theme-toggle .sun {
+    opacity: 0;
+    transform: rotate(180deg);
+  }
+
+  [data-theme="dark"] .theme-toggle .moon {
+    opacity: 1;
+    transform: rotate(0);
+  }
+
+  @media (max-width: 768px) {
+    .mobile-toggle {
+      display: flex;
+    }
+
+    .nav-list {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      flex-direction: column;
+      padding: var(--space-md);
+    }
+
+    .nav-list.active {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  // Theme toggle
+  const themeToggle = document.querySelector('.theme-toggle');
+  themeToggle?.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+
+  // Mobile menu toggle
+  const mobileToggle = document.querySelector('.mobile-toggle');
+  const navList = document.querySelector('.nav-list');
+  mobileToggle?.addEventListener('click', () => {
+    navList?.classList.toggle('active');
+  });
+</script>

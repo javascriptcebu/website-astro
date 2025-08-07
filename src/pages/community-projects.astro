@@ -1,0 +1,845 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import BentoCard from '../components/BentoCard.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+
+const featuredProjects = [
+  {
+    name: 'Interior Designer AI',
+    description: 'AI-powered room design application using cutting-edge machine learning',
+    tech: ['React', 'TypeScript', 'AI/ML', 'Node.js'],
+    stars: 234,
+    contributors: 12,
+    status: 'active'
+  },
+  {
+    name: 'Chessu',
+    description: 'Real-time multiplayer chess web application with modern UI',
+    tech: ['Vue.js', 'WebSocket', 'Node.js', 'MongoDB'],
+    stars: 189,
+    contributors: 8,
+    status: 'active'
+  },
+  {
+    name: 'WeaveDB',
+    description: 'Decentralized NoSQL database for Web3 applications',
+    tech: ['Blockchain', 'JavaScript', 'Web3', 'Smart Contracts'],
+    stars: 456,
+    contributors: 23,
+    status: 'active'
+  }
+];
+
+const communityProjects = [
+  {
+    name: 'JS Cebu Website',
+    description: 'Our community website built with modern web technologies',
+    tech: ['Astro', 'TypeScript', 'CSS'],
+    category: 'web'
+  },
+  {
+    name: 'Event Manager',
+    description: 'Platform for managing community events and registrations',
+    tech: ['Next.js', 'Prisma', 'PostgreSQL'],
+    category: 'tool'
+  },
+  {
+    name: 'Code Reviewer Bot',
+    description: 'Automated code review tool for pull requests',
+    tech: ['Python', 'GitHub API', 'AI'],
+    category: 'tool'
+  },
+  {
+    name: 'Learning Path',
+    description: 'Interactive learning platform for JavaScript developers',
+    tech: ['React', 'MDX', 'Tailwind'],
+    category: 'education'
+  },
+  {
+    name: 'Portfolio Generator',
+    description: 'Generate beautiful developer portfolios from GitHub',
+    tech: ['Svelte', 'GitHub API', 'Vercel'],
+    category: 'tool'
+  },
+  {
+    name: 'Tech Jobs Cebu',
+    description: 'Job board for tech opportunities in Cebu',
+    tech: ['Vue.js', 'Supabase', 'Nuxt'],
+    category: 'web'
+  }
+];
+
+const contributionLevels = [
+  { level: 'Beginner', icon: '🌱', description: 'Documentation, bug reports, testing' },
+  { level: 'Intermediate', icon: '🌿', description: 'Bug fixes, features, code reviews' },
+  { level: 'Advanced', icon: '🌳', description: 'Architecture, mentoring, maintenance' }
+];
+---
+
+<Layout title="Community Projects">
+  <Navigation />
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-badge">Open Source</span>
+          <h1>Community <span class="highlight">Projects</span></h1>
+          <p class="hero-description">
+            Contribute to real-world projects, learn from experienced developers, and make an impact
+          </p>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-number">15+</span>
+              <span class="stat-label">Active Projects</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">200+</span>
+              <span class="stat-label">Contributors</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">1.2k+</span>
+              <span class="stat-label">Pull Requests</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Spotlight</span>
+          <h2>Featured Projects</h2>
+          <p>Our most active and impactful open-source contributions</p>
+        </div>
+        
+        <BentoGrid>
+          {featuredProjects.map((project, index) => (
+            <BentoCard class="col-span-2 row-span-2" variant={index === 0 ? 'gradient' : 'default'}>
+              <div class="featured-project">
+                <div class="project-header">
+                  <ImagePlaceholder width="60px" height="60px" pattern="dots">
+                    <span style="font-size: 2rem;">📦</span>
+                  </ImagePlaceholder>
+                  <div class="project-status">
+                    <span class="status-dot"></span>
+                    Active
+                  </div>
+                </div>
+                <h3>{project.name}</h3>
+                <p>{project.description}</p>
+                <div class="tech-stack">
+                  {project.tech.map(tech => (
+                    <span class="tech-tag">{tech}</span>
+                  ))}
+                </div>
+                <div class="project-stats">
+                  <div class="stat">
+                    <span>⭐</span>
+                    <span>{project.stars} stars</span>
+                  </div>
+                  <div class="stat">
+                    <span>👥</span>
+                    <span>{project.contributors} contributors</span>
+                  </div>
+                </div>
+                <a href="#" class="project-link">
+                  View on GitHub →
+                </a>
+              </div>
+            </BentoCard>
+          ))}
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- How to Contribute -->
+    <section class="section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Get Involved</span>
+          <h2>How to Contribute</h2>
+        </div>
+        
+        <BentoGrid>
+          <BentoCard class="col-span-6">
+            <div class="contribution-guide">
+              <div class="guide-steps">
+                <div class="step">
+                  <div class="step-number">1</div>
+                  <div class="step-content">
+                    <h4>Choose a Project</h4>
+                    <p>Browse our projects and find one that matches your interests and skill level</p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-number">2</div>
+                  <div class="step-content">
+                    <h4>Read Guidelines</h4>
+                    <p>Check the project's README and contribution guidelines</p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-number">3</div>
+                  <div class="step-content">
+                    <h4>Pick an Issue</h4>
+                    <p>Look for "good first issue" or "help wanted" labels</p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-number">4</div>
+                  <div class="step-content">
+                    <h4>Submit PR</h4>
+                    <p>Create a pull request with your changes</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          <!-- Contribution Levels -->
+          {contributionLevels.map(level => (
+            <BentoCard class="col-span-2">
+              <div class="level-card">
+                <span class="level-icon">{level.icon}</span>
+                <h4>{level.level}</h4>
+                <p>{level.description}</p>
+              </div>
+            </BentoCard>
+          ))}
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- All Projects -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Explore</span>
+          <h2>All Community Projects</h2>
+        </div>
+        
+        <div class="filter-tabs">
+          <button class="tab active">All</button>
+          <button class="tab">Web Apps</button>
+          <button class="tab">Tools</button>
+          <button class="tab">Education</button>
+        </div>
+        
+        <BentoGrid>
+          {communityProjects.map(project => (
+            <BentoCard class="col-span-3">
+              <div class="project-card">
+                <div class="project-header">
+                  <ImagePlaceholder width="50px" height="50px" pattern="grid">
+                    <span>💻</span>
+                  </ImagePlaceholder>
+                  <span class="project-category">{project.category}</span>
+                </div>
+                <h4>{project.name}</h4>
+                <p>{project.description}</p>
+                <div class="tech-list">
+                  {project.tech.map(tech => (
+                    <span class="tech-badge">{tech}</span>
+                  ))}
+                </div>
+                <div class="project-actions">
+                  <a href="#" class="action-link">View Project</a>
+                  <a href="#" class="action-link">Contribute</a>
+                </div>
+              </div>
+            </BentoCard>
+          ))}
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Contribution Stats -->
+    <section class="section-alt">
+      <div class="container">
+        <BentoGrid>
+          <BentoCard class="col-span-3 row-span-2" variant="primary">
+            <div class="stats-card">
+              <h3>Community Impact</h3>
+              <div class="impact-grid">
+                <div class="impact-item">
+                  <span class="impact-number">500+</span>
+                  <span class="impact-label">Issues Resolved</span>
+                </div>
+                <div class="impact-item">
+                  <span class="impact-number">1.2k</span>
+                  <span class="impact-label">Commits</span>
+                </div>
+                <div class="impact-item">
+                  <span class="impact-number">50k+</span>
+                  <span class="impact-label">Lines of Code</span>
+                </div>
+                <div class="impact-item">
+                  <span class="impact-number">100%</span>
+                  <span class="impact-label">Open Source</span>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          <BentoCard class="col-span-3">
+            <div class="contributor-spotlight">
+              <h3>Top Contributors</h3>
+              <div class="contributors-list">
+                <div class="contributor">
+                  <ImagePlaceholder width="40px" height="40px" pattern="circles">
+                    <span>👨‍💻</span>
+                  </ImagePlaceholder>
+                  <div class="contributor-info">
+                    <span class="contributor-name">John Developer</span>
+                    <span class="contributor-stats">234 contributions</span>
+                  </div>
+                </div>
+                <div class="contributor">
+                  <ImagePlaceholder width="40px" height="40px" pattern="circles">
+                    <span>👩‍💻</span>
+                  </ImagePlaceholder>
+                  <div class="contributor-info">
+                    <span class="contributor-name">Jane Coder</span>
+                    <span class="contributor-stats">189 contributions</span>
+                  </div>
+                </div>
+                <div class="contributor">
+                  <ImagePlaceholder width="40px" height="40px" pattern="circles">
+                    <span>🧑‍💻</span>
+                  </ImagePlaceholder>
+                  <div class="contributor-info">
+                    <span class="contributor-name">Alex Builder</span>
+                    <span class="contributor-stats">156 contributions</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          <BentoCard class="col-span-6" variant="gradient">
+            <div class="cta-contribute">
+              <h2>Start Contributing Today</h2>
+              <p>Join our open-source community and make a difference. Every contribution counts!</p>
+              <div class="cta-actions">
+                <a href="https://github.com/javascriptcebu" class="btn btn-dark">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                  View on GitHub
+                </a>
+                <a href="#" class="btn btn-secondary">Contribution Guide</a>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    background: linear-gradient(135deg, 
+      color-mix(in srgb, var(--color-green) 10%, var(--color-bg)),
+      var(--color-bg));
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: color-mix(in srgb, var(--color-green) 15%, var(--color-bg));
+    border: 1px solid var(--color-green);
+    border-radius: var(--radius-2xl);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-green);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: var(--space-md);
+  }
+
+  .highlight {
+    background: linear-gradient(135deg, var(--color-green), var(--color-green-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2xl);
+  }
+
+  .hero-stats .stat {
+    text-align: center;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-green);
+    margin-bottom: var(--space-xs);
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* Sections */
+  .section {
+    padding: var(--space-3xl) 0;
+  }
+
+  .section-alt {
+    padding: var(--space-3xl) 0;
+    background: var(--color-bg-secondary);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .section-label {
+    display: inline-block;
+    padding: 0.375rem 1rem;
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-radius: var(--radius-2xl);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+  }
+
+  .section-header h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .section-header p {
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+  }
+
+  /* Featured Projects */
+  .featured-project {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+  }
+
+  .project-status {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: 0.25rem 0.75rem;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--color-green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .featured-project h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .featured-project p {
+    flex: 1;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-lg);
+  }
+
+  .tech-tag {
+    padding: 0.25rem 0.75rem;
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .bento-card.gradient .tech-tag {
+    background: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: var(--color-black);
+  }
+
+  .project-stats {
+    display: flex;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-md);
+  }
+
+  .project-stats .stat {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.875rem;
+  }
+
+  .project-link {
+    color: var(--color-yellow);
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform var(--transition-fast);
+  }
+
+  .project-link:hover {
+    transform: translateX(4px);
+  }
+
+  /* Contribution Guide */
+  .guide-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .step {
+    text-align: center;
+  }
+
+  .step-number {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto var(--space-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .step-content h4 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .step-content p {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* Level Cards */
+  .level-card {
+    text-align: center;
+    padding: var(--space-lg);
+  }
+
+  .level-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: var(--space-md);
+  }
+
+  .level-card h4 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .level-card p {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* Filter Tabs */
+  .filter-tabs {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .tab {
+    padding: 0.5rem 1.25rem;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-2xl);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .tab:hover {
+    background: var(--color-bg-secondary);
+  }
+
+  .tab.active {
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-color: var(--color-yellow);
+  }
+
+  /* Project Cards */
+  .project-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-category {
+    padding: 0.25rem 0.5rem;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .project-card h4 {
+    margin: var(--space-md) 0 var(--space-sm);
+  }
+
+  .project-card p {
+    flex: 1;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+  }
+
+  .tech-badge {
+    padding: 0.125rem 0.5rem;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+  }
+
+  .project-actions {
+    display: flex;
+    gap: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .action-link {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .action-link:hover {
+    color: var(--color-yellow);
+  }
+
+  /* Stats Card */
+  .stats-card {
+    text-align: center;
+    padding: var(--space-lg);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .stats-card h3 {
+    color: var(--color-black);
+    margin-bottom: var(--space-xl);
+  }
+
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .impact-item {
+    text-align: center;
+  }
+
+  .impact-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-black);
+    margin-bottom: var(--space-xs);
+  }
+
+  .impact-label {
+    font-size: 0.875rem;
+    color: var(--color-black);
+    opacity: 0.8;
+  }
+
+  /* Contributors */
+  .contributors-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .contributor {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-sm);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+  }
+
+  .contributor-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contributor-name {
+    font-weight: 600;
+  }
+
+  .contributor-stats {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* CTA */
+  .cta-contribute {
+    text-align: center;
+    padding: var(--space-xl);
+  }
+
+  .cta-contribute h2 {
+    color: var(--color-black);
+    margin-bottom: var(--space-md);
+  }
+
+  .cta-contribute p {
+    color: var(--color-black);
+    opacity: 0.9;
+    font-size: 1.125rem;
+    margin-bottom: var(--space-xl);
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    text-decoration: none;
+    border: 2px solid transparent;
+  }
+
+  .btn-dark {
+    background: var(--color-black);
+    color: var(--color-white);
+    border-color: var(--color-black);
+  }
+
+  .btn-dark:hover {
+    background: var(--color-gray-800);
+    border-color: var(--color-gray-800);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-black);
+    border-color: var(--color-black);
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .guide-steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .impact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-stats {
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .guide-steps {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-actions {
+      flex-direction: column;
+    }
+  }
+</style>

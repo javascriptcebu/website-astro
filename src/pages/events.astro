@@ -1,0 +1,737 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import BentoCard from '../components/BentoCard.astro';
+
+const upcomingEvents = [
+  {
+    id: 1,
+    title: 'Hacktoberfest 2024',
+    description: 'Join us for a month-long celebration of open source. Contribute to projects, win prizes, and level up your skills!',
+    date: 'October 5, 2024',
+    time: '2:00 PM - 6:00 PM',
+    location: 'Cebu IT Park',
+    type: 'hackathon',
+    status: 'upcoming',
+    registrationLink: 'https://hacktoberfest.jscebu.org',
+    image: '🎃'
+  },
+  {
+    id: 2,
+    title: 'React Workshop: Advanced Patterns',
+    description: 'Deep dive into advanced React patterns including compound components, render props, and custom hooks.',
+    date: 'November 15, 2024',
+    time: '1:00 PM - 5:00 PM',
+    location: 'enspace Cebu',
+    type: 'workshop',
+    status: 'upcoming',
+    registrationLink: '#',
+    image: '⚛️'
+  }
+];
+
+const pastEvents = [
+  {
+    id: 3,
+    title: 'Strapi 5 Release Party',
+    description: 'Celebrated the launch of Strapi 5 with tech talks, networking, and exclusive swag.',
+    date: 'September 28, 2024',
+    time: '3:00 PM - 7:00 PM',
+    location: 'Sun Asterisk Office',
+    type: 'meetup',
+    status: 'completed',
+    attendees: 45,
+    image: '🚀'
+  },
+  {
+    id: 4,
+    title: 'Automated Testing Workshop',
+    description: 'Hands-on workshop covering unit testing, integration testing, and E2E testing strategies.',
+    date: 'August 20, 2024',
+    time: '2:00 PM - 6:00 PM',
+    location: 'LegalMatch Philippines',
+    type: 'workshop',
+    status: 'completed',
+    attendees: 32,
+    image: '🧪'
+  },
+  {
+    id: 5,
+    title: 'Vue.js 3 Composition API',
+    description: 'Explored the new Composition API in Vue 3 with practical examples and migration strategies.',
+    date: 'July 15, 2024',
+    time: '2:00 PM - 5:00 PM',
+    location: 'Online',
+    type: 'webinar',
+    status: 'completed',
+    attendees: 78,
+    image: '🍀'
+  }
+];
+
+const getEventTypeColor = (type: string) => {
+  switch(type) {
+    case 'hackathon': return 'gradient';
+    case 'workshop': return 'blue';
+    case 'meetup': return 'green';
+    case 'webinar': return 'red';
+    default: return 'default';
+  }
+};
+---
+
+<Layout title="Events">
+  <Navigation />
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Community <span class="highlight">Events</span></h1>
+          <p class="hero-description">
+            Join us for workshops, meetups, hackathons, and more. Learn, network, and grow with fellow developers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Event -->
+    <section class="container section">
+      <BentoGrid>
+        <BentoCard class="col-span-6 row-span-2" variant="gradient">
+          <div class="featured-event">
+            <div class="featured-content">
+              <span class="featured-badge">Featured Event</span>
+              <h2>{upcomingEvents[0].title}</h2>
+              <p class="featured-description">{upcomingEvents[0].description}</p>
+              <div class="event-meta">
+                <div class="meta-item">
+                  <span class="meta-icon">📅</span>
+                  <div>
+                    <span class="meta-label">Date</span>
+                    <span class="meta-value">{upcomingEvents[0].date}</span>
+                  </div>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-icon">⏰</span>
+                  <div>
+                    <span class="meta-label">Time</span>
+                    <span class="meta-value">{upcomingEvents[0].time}</span>
+                  </div>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-icon">📍</span>
+                  <div>
+                    <span class="meta-label">Location</span>
+                    <span class="meta-value">{upcomingEvents[0].location}</span>
+                  </div>
+                </div>
+              </div>
+              <a href={upcomingEvents[0].registrationLink} class="btn btn-dark">Register Now</a>
+            </div>
+            <div class="featured-visual">
+              <span class="featured-icon">{upcomingEvents[0].image}</span>
+            </div>
+          </div>
+        </BentoCard>
+      </BentoGrid>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="container section">
+      <div class="section-header">
+        <h2>Upcoming Events</h2>
+        <p>Don't miss out on these exciting opportunities</p>
+      </div>
+      
+      <BentoGrid>
+        {upcomingEvents.slice(1).map(event => (
+          <BentoCard class="col-span-3" variant={getEventTypeColor(event.type)}>
+            <div class="event-card">
+              <div class="event-header">
+                <span class="event-icon">{event.image}</span>
+                <span class="event-type">{event.type}</span>
+              </div>
+              <h3>{event.title}</h3>
+              <p>{event.description}</p>
+              <div class="event-details">
+                <span>📅 {event.date}</span>
+                <span>📍 {event.location}</span>
+              </div>
+              <a href={event.registrationLink} class="event-link">
+                Register →
+              </a>
+            </div>
+          </BentoCard>
+        ))}
+
+        <!-- Call for Speakers -->
+        <BentoCard class="col-span-3" variant="primary">
+          <div class="speaker-card">
+            <span class="speaker-icon">🎤</span>
+            <h3>Become a Speaker</h3>
+            <p>Share your knowledge and inspire fellow developers at our events.</p>
+            <a href="/official-links" class="btn-inline">Submit a Talk →</a>
+          </div>
+        </BentoCard>
+
+        <!-- Event Calendar -->
+        <BentoCard class="col-span-3">
+          <div class="calendar-card">
+            <h3>Event Calendar</h3>
+            <div class="calendar-preview">
+              <div class="calendar-month">November 2024</div>
+              <div class="calendar-events">
+                <div class="calendar-event">
+                  <span class="event-date">15</span>
+                  <span class="event-name">React Workshop</span>
+                </div>
+                <div class="calendar-event">
+                  <span class="event-date">22</span>
+                  <span class="event-name">JS Meetup</span>
+                </div>
+                <div class="calendar-event">
+                  <span class="event-date">29</span>
+                  <span class="event-name">Code Review Session</span>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="calendar-link">View Full Calendar →</a>
+          </div>
+        </BentoCard>
+      </BentoGrid>
+    </section>
+
+    <!-- Past Events -->
+    <section class="container section">
+      <div class="section-header">
+        <h2>Past Events</h2>
+        <p>Relive the memories from our previous gatherings</p>
+      </div>
+      
+      <BentoGrid>
+        {pastEvents.map(event => (
+          <BentoCard class="col-span-2">
+            <div class="past-event-card">
+              <div class="past-event-header">
+                <span class="past-event-icon">{event.image}</span>
+                <span class="past-event-type">{event.type}</span>
+              </div>
+              <h4>{event.title}</h4>
+              <p class="past-event-date">{event.date}</p>
+              <div class="past-event-stats">
+                <span class="attendees">👥 {event.attendees} attendees</span>
+              </div>
+            </div>
+          </BentoCard>
+        ))}
+
+        <!-- Event Stats -->
+        <BentoCard class="col-span-3 row-span-2">
+          <div class="stats-card">
+            <h3>2024 Event Statistics</h3>
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-value">24</span>
+                <span class="stat-label">Total Events</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">850+</span>
+                <span class="stat-label">Total Attendees</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">45</span>
+                <span class="stat-label">Speakers</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">12</span>
+                <span class="stat-label">Partners</span>
+              </div>
+            </div>
+            <div class="event-types">
+              <div class="type-bar">
+                <span>Workshops</span>
+                <div class="bar" style="width: 40%"></div>
+              </div>
+              <div class="type-bar">
+                <span>Meetups</span>
+                <div class="bar" style="width: 30%"></div>
+              </div>
+              <div class="type-bar">
+                <span>Hackathons</span>
+                <div class="bar" style="width: 20%"></div>
+              </div>
+              <div class="type-bar">
+                <span>Webinars</span>
+                <div class="bar" style="width: 10%"></div>
+              </div>
+            </div>
+          </div>
+        </BentoCard>
+
+        <!-- Gallery CTA -->
+        <BentoCard class="col-span-3">
+          <div class="gallery-card">
+            <h3>Event Gallery</h3>
+            <div class="gallery-preview">
+              <div class="gallery-item">📸</div>
+              <div class="gallery-item">🎉</div>
+              <div class="gallery-item">👥</div>
+              <div class="gallery-item">💻</div>
+            </div>
+            <a href="#" class="gallery-link">View All Photos →</a>
+          </div>
+        </BentoCard>
+      </BentoGrid>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    padding: var(--space-3xl) 0;
+    background: linear-gradient(135deg, 
+      color-mix(in srgb, var(--color-yellow) 10%, var(--color-bg)), 
+      var(--color-bg));
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    margin-bottom: var(--space-md);
+  }
+
+  .highlight {
+    background: linear-gradient(135deg, var(--color-yellow), var(--color-yellow-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* Section Styles */
+  .section {
+    padding: var(--space-3xl) var(--space-md);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .section-header h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .section-header p {
+    color: var(--color-text-secondary);
+  }
+
+  /* Featured Event */
+  .featured-event {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-2xl);
+    height: 100%;
+    align-items: center;
+  }
+
+  .featured-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--color-black);
+    color: var(--color-white);
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: var(--space-md);
+  }
+
+  .featured-content h2 {
+    color: var(--color-black);
+    margin-bottom: var(--space-md);
+  }
+
+  .featured-description {
+    color: var(--color-black);
+    opacity: 0.8;
+    margin-bottom: var(--space-lg);
+  }
+
+  .event-meta {
+    display: grid;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+
+  .meta-item {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+  }
+
+  .meta-icon {
+    font-size: 1.5rem;
+  }
+
+  .meta-item div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .meta-label {
+    font-size: 0.75rem;
+    color: var(--color-black);
+    opacity: 0.6;
+  }
+
+  .meta-value {
+    font-weight: 600;
+    color: var(--color-black);
+  }
+
+  .featured-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .featured-icon {
+    font-size: 8rem;
+  }
+
+  /* Event Cards */
+  .event-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+  }
+
+  .event-icon {
+    font-size: 2.5rem;
+  }
+
+  .event-type {
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-white);
+  }
+
+  .event-card h3 {
+    color: var(--color-white);
+    margin-bottom: var(--space-sm);
+  }
+
+  .event-card p {
+    color: var(--color-white);
+    opacity: 0.9;
+    flex: 1;
+    margin-bottom: var(--space-md);
+  }
+
+  .event-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    font-size: 0.875rem;
+    color: var(--color-white);
+    opacity: 0.9;
+    margin-bottom: var(--space-md);
+  }
+
+  .event-link {
+    color: var(--color-white);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: transform var(--transition-fast);
+  }
+
+  .event-link:hover {
+    transform: translateX(4px);
+  }
+
+  /* Speaker Card */
+  .speaker-card {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .speaker-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .speaker-card h3 {
+    color: var(--color-black);
+    margin-bottom: var(--space-sm);
+  }
+
+  .speaker-card p {
+    color: var(--color-black);
+    opacity: 0.8;
+    margin-bottom: var(--space-md);
+  }
+
+  .btn-inline {
+    color: var(--color-black);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  /* Calendar Card */
+  .calendar-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .calendar-preview {
+    flex: 1;
+    margin-top: var(--space-md);
+  }
+
+  .calendar-month {
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    color: var(--color-yellow);
+  }
+
+  .calendar-events {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .calendar-event {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-sm);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+
+  .calendar-event:hover {
+    background: var(--color-yellow);
+    color: var(--color-black);
+  }
+
+  .event-date {
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+
+  .event-name {
+    font-size: 0.875rem;
+  }
+
+  .calendar-link {
+    color: var(--color-yellow);
+    font-weight: 600;
+    margin-top: var(--space-md);
+  }
+
+  /* Past Events */
+  .past-event-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .past-event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+  }
+
+  .past-event-icon {
+    font-size: 2rem;
+  }
+
+  .past-event-type {
+    padding: 0.25rem 0.5rem;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-sm);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  .past-event-card h4 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .past-event-date {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .past-event-stats {
+    margin-top: auto;
+  }
+
+  .attendees {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* Stats Card */
+  .stats-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin: var(--space-lg) 0;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-yellow);
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .event-types {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-top: auto;
+  }
+
+  .type-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .type-bar span {
+    font-size: 0.875rem;
+    min-width: 80px;
+  }
+
+  .type-bar .bar {
+    height: 8px;
+    background: var(--color-yellow);
+    border-radius: var(--radius-sm);
+  }
+
+  /* Gallery Card */
+  .gallery-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gallery-preview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-sm);
+    margin: var(--space-md) 0;
+    flex: 1;
+  }
+
+  .gallery-item {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    font-size: 2rem;
+    transition: all var(--transition-fast);
+  }
+
+  .gallery-item:hover {
+    transform: scale(1.1);
+    background: var(--color-yellow);
+  }
+
+  .gallery-link {
+    color: var(--color-yellow);
+    font-weight: 600;
+    margin-top: auto;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    transition: all var(--transition-base);
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .btn-dark {
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .btn-dark:hover {
+    background: var(--color-gray-800);
+    transform: translateY(-2px);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .featured-event {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-visual {
+      display: none;
+    }
+
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,564 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import BentoCard from '../components/BentoCard.astro';
+
+const leads = [
+  {
+    name: 'Dorell James',
+    role: 'React Cebu Lead',
+    community: 'react',
+    email: 'dorell@jscebu.org',
+    bio: 'Passionate about building modern web applications with React',
+    avatar: '👨‍💻'
+  },
+  {
+    name: 'Cyrus Hiyas',
+    role: 'Angular Cebu Lead',
+    community: 'angular',
+    email: 'cyrus@jscebu.org',
+    bio: 'Enterprise application specialist with Angular expertise',
+    avatar: '🚀'
+  },
+  {
+    name: 'Harlequin Doyon',
+    role: 'Vue.js Cebu Lead',
+    community: 'vue',
+    email: 'harlequin@jscebu.org',
+    bio: 'Progressive web app enthusiast and Vue.js advocate',
+    avatar: '🎨'
+  }
+];
+
+const coLeads = [
+  {
+    name: 'Sieg Balona',
+    role: 'React Cebu Co-Lead',
+    community: 'react',
+    email: 'sieg@jscebu.org',
+    bio: 'Frontend developer focused on React ecosystem',
+    avatar: '⚡'
+  }
+];
+
+const members = [
+  { name: 'Member 1', community: 'react', avatar: '🌟' },
+  { name: 'Member 2', community: 'vue', avatar: '✨' },
+  { name: 'Member 3', community: 'angular', avatar: '💫' },
+  { name: 'Member 4', community: 'react', avatar: '🌈' },
+  { name: 'Member 5', community: 'vue', avatar: '🎯' },
+  { name: 'Member 6', community: 'angular', avatar: '🎪' }
+];
+
+const getCommunityVariant = (community: string) => {
+  switch(community) {
+    case 'react': return 'blue';
+    case 'vue': return 'green';
+    case 'angular': return 'red';
+    default: return 'default';
+  }
+};
+---
+
+<Layout title="Members">
+  <Navigation />
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Our <span class="highlight">Community</span></h1>
+          <p class="hero-description">
+            Meet the passionate developers who make JavaScript Cebu a vibrant and inclusive community.
+          </p>
+          <div class="stats-row">
+            <div class="stat-item">
+              <span class="stat-number">1.8k+</span>
+              <span class="stat-label">Total Members</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">3</span>
+              <span class="stat-label">Sub-communities</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">Core Team</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Leads Section -->
+    <section class="container section">
+      <div class="section-header">
+        <h2>Community Leaders</h2>
+        <p>The dedicated individuals leading our sub-communities</p>
+      </div>
+      
+      <BentoGrid>
+        {leads.map(member => (
+          <BentoCard class="col-span-2 row-span-2" variant={getCommunityVariant(member.community)}>
+            <div class="member-card lead-card">
+              <div class="member-avatar">{member.avatar}</div>
+              <h3>{member.name}</h3>
+              <span class="member-role">{member.role}</span>
+              <p class="member-bio">{member.bio}</p>
+              <a href={`mailto:${member.email}`} class="member-contact">
+                Get in touch →
+              </a>
+            </div>
+          </BentoCard>
+        ))}
+      </BentoGrid>
+    </section>
+
+    <!-- Co-Leads Section -->
+    <section class="container section">
+      <div class="section-header">
+        <h2>Co-Leaders</h2>
+        <p>Supporting our community growth and initiatives</p>
+      </div>
+      
+      <BentoGrid>
+        {coLeads.map(member => (
+          <BentoCard class="col-span-3" variant={getCommunityVariant(member.community)}>
+            <div class="member-card">
+              <div class="member-header">
+                <div class="member-avatar">{member.avatar}</div>
+                <div>
+                  <h3>{member.name}</h3>
+                  <span class="member-role">{member.role}</span>
+                </div>
+              </div>
+              <p class="member-bio">{member.bio}</p>
+              <a href={`mailto:${member.email}`} class="member-contact">
+                Contact →
+              </a>
+            </div>
+          </BentoCard>
+        ))}
+        
+        <!-- Join as Co-Lead CTA -->
+        <BentoCard class="col-span-3" variant="primary">
+          <div class="join-card">
+            <h3>Become a Co-Lead</h3>
+            <p>Help shape the future of JavaScript Cebu by joining our leadership team.</p>
+            <a href="/official-links" class="btn-inline">Learn More →</a>
+          </div>
+        </BentoCard>
+      </BentoGrid>
+    </section>
+
+    <!-- All Members Section -->
+    <section class="container section">
+      <div class="section-header">
+        <h2>Community Members</h2>
+        <p>Join our growing community of 1,800+ developers</p>
+      </div>
+      
+      <BentoGrid>
+        <!-- Member showcase -->
+        <BentoCard class="col-span-6 row-span-2">
+          <div class="members-showcase">
+            <div class="members-grid">
+              {members.map(member => (
+                <div class={`member-tile ${member.community}`}>
+                  <span class="member-emoji">{member.avatar}</span>
+                </div>
+              ))}
+              <div class="member-tile more">
+                <span>+1.8k</span>
+              </div>
+            </div>
+            <div class="showcase-content">
+              <h3>Join Our Community</h3>
+              <p>Be part of a thriving ecosystem of developers learning and growing together.</p>
+              <div class="community-tags">
+                <span class="tag react">React Developers</span>
+                <span class="tag vue">Vue.js Enthusiasts</span>
+                <span class="tag angular">Angular Experts</span>
+              </div>
+            </div>
+          </div>
+        </BentoCard>
+
+        <!-- Community Stats -->
+        <BentoCard class="col-span-3">
+          <div class="stats-card">
+            <h3>Growth Stats</h3>
+            <div class="growth-chart">
+              <div class="bar" style="height: 40%"><span>2021</span></div>
+              <div class="bar" style="height: 60%"><span>2022</span></div>
+              <div class="bar" style="height: 80%"><span>2023</span></div>
+              <div class="bar active" style="height: 100%"><span>2024</span></div>
+            </div>
+          </div>
+        </BentoCard>
+
+        <!-- Join CTA -->
+        <BentoCard class="col-span-3" variant="gradient">
+          <div class="join-community">
+            <h3>Ready to Join?</h3>
+            <p>Connect with us on social media and be part of the conversation.</p>
+            <a href="/official-links" class="btn btn-dark">Join Now</a>
+          </div>
+        </BentoCard>
+      </BentoGrid>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    padding: var(--space-3xl) 0;
+    background: linear-gradient(135deg, 
+      color-mix(in srgb, var(--color-blue) 5%, var(--color-bg)), 
+      color-mix(in srgb, var(--color-green) 5%, var(--color-bg)),
+      color-mix(in srgb, var(--color-red) 5%, var(--color-bg)));
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    margin-bottom: var(--space-md);
+  }
+
+  .highlight {
+    background: linear-gradient(135deg, var(--color-yellow), var(--color-yellow-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-xl);
+  }
+
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2xl);
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-yellow);
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* Section Styles */
+  .section {
+    padding: var(--space-3xl) var(--space-md);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .section-header h2 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .section-header p {
+    color: var(--color-text-secondary);
+  }
+
+  /* Member Cards */
+  .member-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .lead-card {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .member-avatar {
+    font-size: 4rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .member-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+
+  .member-header .member-avatar {
+    font-size: 3rem;
+    margin-bottom: 0;
+  }
+
+  .member-card h3 {
+    color: var(--color-white);
+    margin-bottom: var(--space-xs);
+  }
+
+  .member-role {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    color: var(--color-white);
+    margin-bottom: var(--space-md);
+  }
+
+  .member-bio {
+    flex: 1;
+    color: var(--color-white);
+    opacity: 0.9;
+    margin-bottom: var(--space-md);
+  }
+
+  .member-contact {
+    color: var(--color-white);
+    font-weight: 600;
+    padding: var(--space-xs) var(--space-sm);
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    display: inline-block;
+  }
+
+  .member-contact:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(4px);
+  }
+
+  /* Join Cards */
+  .join-card {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .join-card h3 {
+    color: var(--color-black);
+    margin-bottom: var(--space-sm);
+  }
+
+  .join-card p {
+    color: var(--color-black);
+    opacity: 0.8;
+    margin-bottom: var(--space-md);
+  }
+
+  .btn-inline {
+    color: var(--color-black);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  /* Members Showcase */
+  .members-showcase {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: var(--space-sm);
+  }
+
+  .member-tile {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-tertiary);
+    transition: all var(--transition-fast);
+  }
+
+  .member-tile:hover {
+    transform: scale(1.1);
+  }
+
+  .member-tile.react {
+    background: color-mix(in srgb, var(--color-blue) 20%, var(--color-bg-tertiary));
+  }
+
+  .member-tile.vue {
+    background: color-mix(in srgb, var(--color-green) 20%, var(--color-bg-tertiary));
+  }
+
+  .member-tile.angular {
+    background: color-mix(in srgb, var(--color-red) 20%, var(--color-bg-tertiary));
+  }
+
+  .member-tile.more {
+    background: var(--color-yellow);
+    color: var(--color-black);
+    font-weight: 700;
+  }
+
+  .member-emoji {
+    font-size: 2rem;
+  }
+
+  .showcase-content {
+    flex: 1;
+  }
+
+  .community-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-top: var(--space-md);
+  }
+
+  .tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+  }
+
+  .tag.react {
+    background: color-mix(in srgb, var(--color-blue) 10%, var(--color-bg));
+    border-color: var(--color-blue);
+    color: var(--color-blue);
+  }
+
+  .tag.vue {
+    background: color-mix(in srgb, var(--color-green) 10%, var(--color-bg));
+    border-color: var(--color-green);
+    color: var(--color-green);
+  }
+
+  .tag.angular {
+    background: color-mix(in srgb, var(--color-red) 10%, var(--color-bg));
+    border-color: var(--color-red);
+    color: var(--color-red);
+  }
+
+  /* Stats Card */
+  .stats-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .growth-chart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: 150px;
+    margin-top: var(--space-md);
+  }
+
+  .bar {
+    width: 20%;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    position: relative;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: var(--space-xs);
+  }
+
+  .bar:hover {
+    background: var(--color-yellow);
+  }
+
+  .bar.active {
+    background: var(--color-yellow);
+  }
+
+  .bar span {
+    font-size: 0.75rem;
+    position: absolute;
+    bottom: -20px;
+    color: var(--color-text-secondary);
+  }
+
+  /* Join Community */
+  .join-community {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .join-community h3 {
+    color: var(--color-black);
+    margin-bottom: var(--space-sm);
+  }
+
+  .join-community p {
+    color: var(--color-black);
+    opacity: 0.8;
+    margin-bottom: var(--space-lg);
+  }
+
+  .btn {
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    transition: all var(--transition-base);
+    display: inline-block;
+  }
+
+  .btn-dark {
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .btn-dark:hover {
+    background: var(--color-gray-800);
+    transform: translateY(-2px);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .stats-row {
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .members-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,706 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import BentoCard from '../components/BentoCard.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+---
+
+<Layout title="Mission & Vision">
+  <Navigation />
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-badge">About Us</span>
+          <h1>Mission & <span class="highlight">Vision</span></h1>
+          <p class="hero-description">
+            Building the future of tech in Cebu through community, collaboration, and continuous learning
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Statement -->
+    <section class="section">
+      <div class="container">
+        <BentoGrid>
+          <BentoCard class="col-span-6 row-span-2">
+            <div class="statement-card">
+              <div class="statement-content">
+                <span class="section-label">Our Mission</span>
+                <h2>Empowering Developers, Building Community</h2>
+                <p class="lead-text">
+                  JavaScript Cebu aims to empower and unite developers by providing a collaborative platform for learning, sharing, and innovation in JavaScript and related technologies.
+                </p>
+                <div class="mission-points">
+                  <div class="point">
+                    <span class="point-icon">🎯</span>
+                    <div>
+                      <h4>Foster Learning</h4>
+                      <p>Create opportunities for continuous education through workshops, meetups, and hands-on sessions</p>
+                    </div>
+                  </div>
+                  <div class="point">
+                    <span class="point-icon">🤝</span>
+                    <div>
+                      <h4>Build Connections</h4>
+                      <p>Unite developers across all skill levels to share knowledge and experiences</p>
+                    </div>
+                  </div>
+                  <div class="point">
+                    <span class="point-icon">💡</span>
+                    <div>
+                      <h4>Drive Innovation</h4>
+                      <p>Encourage creative problem-solving and adoption of cutting-edge technologies</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="statement-visual">
+                <ImagePlaceholder height="400px" pattern="waves">
+                  <div class="visual-content">
+                    <span style="font-size: 6rem;">🚀</span>
+                  </div>
+                </ImagePlaceholder>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Vision Statement -->
+    <section class="section-alt">
+      <div class="container">
+        <BentoGrid>
+          <BentoCard class="col-span-6 row-span-2" variant="gradient">
+            <div class="vision-card">
+              <span class="section-label dark">Our Vision</span>
+              <h2>Leading Tech Innovation in Cebu</h2>
+              <p class="vision-text">
+                To be the leading catalyst for technological advancement and community collaboration in Cebu, fostering a vibrant ecosystem where developers can grow, innovate, and contribute to the global tech scene.
+              </p>
+              <div class="vision-pillars">
+                <div class="pillar">
+                  <ImagePlaceholder width="100%" height="120px" pattern="dots">
+                    <span style="font-size: 3rem;">🌏</span>
+                  </ImagePlaceholder>
+                  <h4>Global Impact</h4>
+                  <p>Put Cebu on the map as a tech hub</p>
+                </div>
+                <div class="pillar">
+                  <ImagePlaceholder width="100%" height="120px" pattern="lines">
+                    <span style="font-size: 3rem;">🎓</span>
+                  </ImagePlaceholder>
+                  <h4>Education First</h4>
+                  <p>Prioritize learning and skill development</p>
+                </div>
+                <div class="pillar">
+                  <ImagePlaceholder width="100%" height="120px" pattern="grid">
+                    <span style="font-size: 3rem;">🤝</span>
+                  </ImagePlaceholder>
+                  <h4>Community Driven</h4>
+                  <p>Build lasting professional relationships</p>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">What Drives Us</span>
+          <h2>Core Values</h2>
+        </div>
+        
+        <BentoGrid>
+          <BentoCard class="col-span-2">
+            <div class="value-card">
+              <span class="value-icon">🌟</span>
+              <h3>Excellence</h3>
+              <p>Strive for quality in everything we do, from code to community events</p>
+            </div>
+          </BentoCard>
+
+          <BentoCard class="col-span-2">
+            <div class="value-card">
+              <span class="value-icon">🤲</span>
+              <h3>Inclusivity</h3>
+              <p>Welcome developers of all backgrounds, experiences, and skill levels</p>
+            </div>
+          </BentoCard>
+
+          <BentoCard class="col-span-2">
+            <div class="value-card">
+              <span class="value-icon">📚</span>
+              <h3>Knowledge Sharing</h3>
+              <p>Freely exchange ideas, best practices, and lessons learned</p>
+            </div>
+          </BentoCard>
+
+          <BentoCard class="col-span-2">
+            <div class="value-card">
+              <span class="value-icon">🔄</span>
+              <h3>Continuous Growth</h3>
+              <p>Embrace lifelong learning and adapt to evolving technologies</p>
+            </div>
+          </BentoCard>
+
+          <BentoCard class="col-span-2">
+            <div class="value-card">
+              <span class="value-icon">🎯</span>
+              <h3>Innovation</h3>
+              <p>Encourage creative solutions and cutting-edge approaches</p>
+            </div>
+          </BentoCard>
+
+          <BentoCard class="col-span-2">
+            <div class="value-card">
+              <span class="value-icon">🤝</span>
+              <h3>Collaboration</h3>
+              <p>Work together to achieve more than we could alone</p>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Success Metrics -->
+    <section class="section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Impact</span>
+          <h2>Measuring Our Success</h2>
+        </div>
+        
+        <BentoGrid>
+          <BentoCard class="col-span-3 row-span-2">
+            <div class="metrics-card">
+              <h3>Growth Metrics</h3>
+              <div class="metrics-list">
+                <div class="metric">
+                  <div class="metric-bar">
+                    <div class="bar-fill" style="width: 85%"></div>
+                  </div>
+                  <div class="metric-info">
+                    <span>Member Growth</span>
+                    <span class="metric-value">85%</span>
+                  </div>
+                </div>
+                <div class="metric">
+                  <div class="metric-bar">
+                    <div class="bar-fill" style="width: 92%"></div>
+                  </div>
+                  <div class="metric-info">
+                    <span>Event Attendance</span>
+                    <span class="metric-value">92%</span>
+                  </div>
+                </div>
+                <div class="metric">
+                  <div class="metric-bar">
+                    <div class="bar-fill" style="width: 78%"></div>
+                  </div>
+                  <div class="metric-info">
+                    <span>Community Engagement</span>
+                    <span class="metric-value">78%</span>
+                  </div>
+                </div>
+                <div class="metric">
+                  <div class="metric-bar">
+                    <div class="bar-fill" style="width: 95%"></div>
+                  </div>
+                  <div class="metric-info">
+                    <span>Member Satisfaction</span>
+                    <span class="metric-value">95%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          <BentoCard class="col-span-3">
+            <div class="achievement-card">
+              <h3>Key Achievements</h3>
+              <div class="achievements">
+                <div class="achievement">
+                  <span class="achievement-icon">🏆</span>
+                  <div>
+                    <h4>50+ Events Hosted</h4>
+                    <p>Workshops, meetups, and hackathons</p>
+                  </div>
+                </div>
+                <div class="achievement">
+                  <span class="achievement-icon">👥</span>
+                  <div>
+                    <h4>1,800+ Active Members</h4>
+                    <p>Growing developer community</p>
+                  </div>
+                </div>
+                <div class="achievement">
+                  <span class="achievement-icon">🤝</span>
+                  <div>
+                    <h4>12+ Partners</h4>
+                    <p>Industry collaborations</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          <BentoCard class="col-span-6" variant="primary">
+            <div class="impact-statement">
+              <h3>Our Impact</h3>
+              <p>
+                Through our initiatives, we've helped hundreds of developers advance their careers, 
+                contributed to numerous open-source projects, and established Cebu as a recognized 
+                tech hub in the Philippines.
+              </p>
+              <div class="impact-stats">
+                <div class="stat">
+                  <span class="stat-number">500+</span>
+                  <span class="stat-label">Developers Trained</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number">30+</span>
+                  <span class="stat-label">Companies Involved</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number">100+</span>
+                  <span class="stat-label">Projects Launched</span>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section">
+      <div class="container">
+        <BentoGrid>
+          <BentoCard class="col-span-6">
+            <div class="cta-section">
+              <h2>Be Part of Our Journey</h2>
+              <p>Join us in shaping the future of technology in Cebu and beyond.</p>
+              <div class="cta-actions">
+                <a href="/members" class="btn btn-primary">Join the Community</a>
+                <a href="/events" class="btn btn-secondary">Attend an Event</a>
+                <a href="/official-links" class="btn btn-secondary">Connect With Us</a>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    background: linear-gradient(135deg, 
+      color-mix(in srgb, var(--color-yellow) 10%, var(--color-bg)),
+      var(--color-bg));
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: color-mix(in srgb, var(--color-yellow) 15%, var(--color-bg));
+    border: 1px solid var(--color-yellow);
+    border-radius: var(--radius-2xl);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-yellow);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: var(--space-md);
+  }
+
+  .highlight {
+    background: linear-gradient(135deg, var(--color-yellow), var(--color-yellow-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Sections */
+  .section {
+    padding: var(--space-3xl) 0;
+  }
+
+  .section-alt {
+    padding: var(--space-3xl) 0;
+    background: var(--color-bg-secondary);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .section-label {
+    display: inline-block;
+    padding: 0.375rem 1rem;
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-radius: var(--radius-2xl);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+  }
+
+  .section-label.dark {
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  /* Statement Cards */
+  .statement-card {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
+    height: 100%;
+  }
+
+  .statement-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .lead-text {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-xl);
+  }
+
+  .mission-points {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .point {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+  }
+
+  .point-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .point h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.125rem;
+  }
+
+  .point p {
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .visual-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  /* Vision Card */
+  .vision-card {
+    text-align: center;
+    padding: var(--space-xl);
+  }
+
+  .vision-card h2 {
+    color: var(--color-black);
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .vision-text {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--color-black);
+    opacity: 0.9;
+    margin-bottom: var(--space-2xl);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .vision-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+    margin-top: var(--space-2xl);
+  }
+
+  .pillar {
+    text-align: center;
+  }
+
+  .pillar h4 {
+    color: var(--color-black);
+    margin: var(--space-md) 0 var(--space-xs);
+  }
+
+  .pillar p {
+    color: var(--color-black);
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  /* Value Cards */
+  .value-card {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-lg);
+  }
+
+  .value-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .value-card h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .value-card p {
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* Metrics */
+  .metrics-card {
+    height: 100%;
+  }
+
+  .metrics-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+  }
+
+  .metric-bar {
+    height: 8px;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-xs);
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-yellow), var(--color-yellow-light));
+    border-radius: var(--radius-sm);
+    transition: width 1s ease;
+  }
+
+  .metric-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+  }
+
+  .metric-value {
+    font-weight: 700;
+    color: var(--color-yellow);
+  }
+
+  /* Achievements */
+  .achievements {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .achievement {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+    padding: var(--space-sm);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+  }
+
+  .achievement-icon {
+    font-size: 2rem;
+  }
+
+  .achievement h4 {
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+  }
+
+  .achievement p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* Impact Statement */
+  .impact-statement {
+    text-align: center;
+    padding: var(--space-lg);
+  }
+
+  .impact-statement h3 {
+    color: var(--color-black);
+    margin-bottom: var(--space-md);
+  }
+
+  .impact-statement p {
+    color: var(--color-black);
+    opacity: 0.9;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-xl);
+  }
+
+  .impact-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2xl);
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-black);
+    line-height: 1;
+    margin-bottom: var(--space-xs);
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--color-black);
+    opacity: 0.8;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    text-align: center;
+    padding: var(--space-xl);
+  }
+
+  .cta-section h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  .cta-section p {
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+    margin-bottom: var(--space-xl);
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    transition: all var(--transition-base);
+    display: inline-block;
+    text-decoration: none;
+    border: 2px solid transparent;
+  }
+
+  .btn-primary {
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-color: var(--color-yellow);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-yellow-dark);
+    border-color: var(--color-yellow-dark);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-text);
+    border-color: var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-bg-secondary);
+    border-color: var(--color-text);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .statement-card {
+      grid-template-columns: 1fr;
+    }
+
+    .statement-visual {
+      display: none;
+    }
+
+    .vision-pillars {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .impact-stats {
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .cta-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

@@ -1,0 +1,54 @@
+---
+export interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class={`bento-grid ${className || ''}`}>
+  <slot />
+</div>
+
+<style>
+  .bento-grid {
+    display: grid;
+    gap: var(--space-md);
+    grid-auto-rows: minmax(180px, auto);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  @media (min-width: 768px) {
+    .bento-grid {
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: minmax(200px, auto);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .bento-grid {
+      grid-template-columns: repeat(6, 1fr);
+      gap: var(--space-lg);
+    }
+  }
+
+  /* Allow children to span multiple columns/rows */
+  .bento-grid > :global(.col-span-2) { grid-column: span 2; }
+  .bento-grid > :global(.col-span-3) { grid-column: span 3; }
+  .bento-grid > :global(.col-span-4) { grid-column: span 4; }
+  .bento-grid > :global(.col-span-5) { grid-column: span 5; }
+  .bento-grid > :global(.col-span-6) { grid-column: span 6; }
+  
+  .bento-grid > :global(.row-span-2) { grid-row: span 2; }
+  .bento-grid > :global(.row-span-3) { grid-row: span 3; }
+  
+  /* Responsive spans */
+  @media (max-width: 767px) {
+    .bento-grid > :global([class*="col-span"]) { grid-column: span 1; }
+  }
+  
+  @media (max-width: 1023px) {
+    .bento-grid > :global(.col-span-5),
+    .bento-grid > :global(.col-span-6) { grid-column: span 4; }
+  }
+</style>
