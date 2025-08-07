@@ -1,82 +1,92 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
-import BentoGrid from '../components/BentoGrid.astro';
-import BentoCard from '../components/BentoCard.astro';
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import BentoGrid from "../components/BentoGrid.astro";
+import BentoCard from "../components/BentoCard.astro";
 
 const upcomingEvents = [
   {
     id: 1,
-    title: 'Hacktoberfest 2024',
-    description: 'Join us for a month-long celebration of open source. Contribute to projects, win prizes, and level up your skills!',
-    date: 'October 5, 2024',
-    time: '2:00 PM - 6:00 PM',
-    location: 'Cebu IT Park',
-    type: 'hackathon',
-    status: 'upcoming',
-    registrationLink: 'https://hacktoberfest.jscebu.org',
-    image: '🎃'
+    title: "Hacktoberfest 2024",
+    description:
+      "Join us for a month-long celebration of open source. Contribute to projects, win prizes, and level up your skills!",
+    date: "October 5, 2024",
+    time: "2:00 PM - 6:00 PM",
+    location: "Cebu IT Park",
+    type: "hackathon",
+    status: "upcoming",
+    registrationLink: "https://hacktoberfest.jscebu.org",
+    image: "🎃",
   },
   {
     id: 2,
-    title: 'React Workshop: Advanced Patterns',
-    description: 'Deep dive into advanced React patterns including compound components, render props, and custom hooks.',
-    date: 'November 15, 2024',
-    time: '1:00 PM - 5:00 PM',
-    location: 'enspace Cebu',
-    type: 'workshop',
-    status: 'upcoming',
-    registrationLink: '#',
-    image: '⚛️'
-  }
+    title: "React Workshop: Advanced Patterns",
+    description:
+      "Deep dive into advanced React patterns including compound components, render props, and custom hooks.",
+    date: "November 15, 2024",
+    time: "1:00 PM - 5:00 PM",
+    location: "enspace Cebu",
+    type: "workshop",
+    status: "upcoming",
+    registrationLink: "#",
+    image: "⚛️",
+  },
 ];
 
 const pastEvents = [
   {
     id: 3,
-    title: 'Strapi 5 Release Party',
-    description: 'Celebrated the launch of Strapi 5 with tech talks, networking, and exclusive swag.',
-    date: 'September 28, 2024',
-    time: '3:00 PM - 7:00 PM',
-    location: 'Sun Asterisk Office',
-    type: 'meetup',
-    status: 'completed',
+    title: "Strapi 5 Release Party",
+    description:
+      "Celebrated the launch of Strapi 5 with tech talks, networking, and exclusive swag.",
+    date: "September 28, 2024",
+    time: "3:00 PM - 7:00 PM",
+    location: "Sun Asterisk Office",
+    type: "meetup",
+    status: "completed",
     attendees: 45,
-    image: '🚀'
+    image: "🚀",
   },
   {
     id: 4,
-    title: 'Automated Testing Workshop',
-    description: 'Hands-on workshop covering unit testing, integration testing, and E2E testing strategies.',
-    date: 'August 20, 2024',
-    time: '2:00 PM - 6:00 PM',
-    location: 'LegalMatch Philippines',
-    type: 'workshop',
-    status: 'completed',
+    title: "Automated Testing Workshop",
+    description:
+      "Hands-on workshop covering unit testing, integration testing, and E2E testing strategies.",
+    date: "August 20, 2024",
+    time: "2:00 PM - 6:00 PM",
+    location: "LegalMatch Philippines",
+    type: "workshop",
+    status: "completed",
     attendees: 32,
-    image: '🧪'
+    image: "🧪",
   },
   {
     id: 5,
-    title: 'Vue.js 3 Composition API',
-    description: 'Explored the new Composition API in Vue 3 with practical examples and migration strategies.',
-    date: 'July 15, 2024',
-    time: '2:00 PM - 5:00 PM',
-    location: 'Online',
-    type: 'webinar',
-    status: 'completed',
+    title: "Vue.js 3 Composition API",
+    description:
+      "Explored the new Composition API in Vue 3 with practical examples and migration strategies.",
+    date: "July 15, 2024",
+    time: "2:00 PM - 5:00 PM",
+    location: "Online",
+    type: "webinar",
+    status: "completed",
     attendees: 78,
-    image: '🍀'
-  }
+    image: "🍀",
+  },
 ];
 
 const getEventTypeColor = (type: string) => {
-  switch(type) {
-    case 'hackathon': return 'gradient';
-    case 'workshop': return 'blue';
-    case 'meetup': return 'green';
-    case 'webinar': return 'red';
-    default: return 'default';
+  switch (type) {
+    case "hackathon":
+      return "gradient";
+    case "workshop":
+      return "blue";
+    case "meetup":
+      return "green";
+    case "webinar":
+      return "red";
+    default:
+      return "default";
   }
 };
 ---
@@ -90,7 +100,8 @@ const getEventTypeColor = (type: string) => {
         <div class="hero-content">
           <h1>Community <span class="highlight">Events</span></h1>
           <p class="hero-description">
-            Join us for workshops, meetups, hackathons, and more. Learn, network, and grow with fellow developers.
+            Join us for workshops, meetups, hackathons, and more. Learn,
+            network, and grow with fellow developers.
           </p>
         </div>
       </div>
@@ -104,7 +115,9 @@ const getEventTypeColor = (type: string) => {
             <div class="featured-content">
               <span class="featured-badge">Featured Event</span>
               <h2>{upcomingEvents[0].title}</h2>
-              <p class="featured-description">{upcomingEvents[0].description}</p>
+              <p class="featured-description">
+                {upcomingEvents[0].description}
+              </p>
               <div class="event-meta">
                 <div class="meta-item">
                   <span class="meta-icon">📅</span>
@@ -128,7 +141,9 @@ const getEventTypeColor = (type: string) => {
                   </div>
                 </div>
               </div>
-              <a href={upcomingEvents[0].registrationLink} class="btn btn-dark">Register Now</a>
+              <a href={upcomingEvents[0].registrationLink} class="btn btn-dark"
+                >Register Now</a
+              >
             </div>
             <div class="featured-visual">
               <span class="featured-icon">{upcomingEvents[0].image}</span>
@@ -144,40 +159,47 @@ const getEventTypeColor = (type: string) => {
         <h2>Upcoming Events</h2>
         <p>Don't miss out on these exciting opportunities</p>
       </div>
-      
+
       <BentoGrid>
-        {upcomingEvents.slice(1).map(event => (
-          <BentoCard class="col-span-3" variant={getEventTypeColor(event.type)}>
-            <div class="event-card">
-              <div class="event-header">
-                <span class="event-icon">{event.image}</span>
-                <span class="event-type">{event.type}</span>
+        {
+          upcomingEvents.slice(1).map((event) => (
+            <BentoCard
+              class="col-span-3"
+              variant={getEventTypeColor(event.type)}
+            >
+              <div class="event-card">
+                <div class="event-header">
+                  <span class="event-icon">{event.image}</span>
+                  <span class="event-type">{event.type}</span>
+                </div>
+                <h3>{event.title}</h3>
+                <p>{event.description}</p>
+                <div class="event-details">
+                  <span>📅 {event.date}</span>
+                  <span>📍 {event.location}</span>
+                </div>
+                <a href={event.registrationLink} class="event-link">
+                  Register →
+                </a>
               </div>
-              <h3>{event.title}</h3>
-              <p>{event.description}</p>
-              <div class="event-details">
-                <span>📅 {event.date}</span>
-                <span>📍 {event.location}</span>
-              </div>
-              <a href={event.registrationLink} class="event-link">
-                Register →
-              </a>
-            </div>
-          </BentoCard>
-        ))}
+            </BentoCard>
+          ))
+        }
 
         <!-- Call for Speakers -->
         <BentoCard class="col-span-3" variant="primary">
           <div class="speaker-card">
             <span class="speaker-icon">🎤</span>
             <h3>Become a Speaker</h3>
-            <p>Share your knowledge and inspire fellow developers at our events.</p>
+            <p>
+              Share your knowledge and inspire fellow developers at our events.
+            </p>
             <a href="/official-links" class="btn-inline">Submit a Talk →</a>
           </div>
         </BentoCard>
 
         <!-- Event Calendar -->
-        <BentoCard class="col-span-3">
+        <BentoCard class="col-span-6">
           <div class="calendar-card">
             <h3>Event Calendar</h3>
             <div class="calendar-preview">
@@ -209,23 +231,25 @@ const getEventTypeColor = (type: string) => {
         <h2>Past Events</h2>
         <p>Relive the memories from our previous gatherings</p>
       </div>
-      
+
       <BentoGrid>
-        {pastEvents.map(event => (
-          <BentoCard class="col-span-2">
-            <div class="past-event-card">
-              <div class="past-event-header">
-                <span class="past-event-icon">{event.image}</span>
-                <span class="past-event-type">{event.type}</span>
+        {
+          pastEvents.map((event) => (
+            <BentoCard class="col-span-2">
+              <div class="past-event-card">
+                <div class="past-event-header">
+                  <span class="past-event-icon">{event.image}</span>
+                  <span class="past-event-type">{event.type}</span>
+                </div>
+                <h4>{event.title}</h4>
+                <p class="past-event-date">{event.date}</p>
+                <div class="past-event-stats">
+                  <span class="attendees">👥 {event.attendees} attendees</span>
+                </div>
               </div>
-              <h4>{event.title}</h4>
-              <p class="past-event-date">{event.date}</p>
-              <div class="past-event-stats">
-                <span class="attendees">👥 {event.attendees} attendees</span>
-              </div>
-            </div>
-          </BentoCard>
-        ))}
+            </BentoCard>
+          ))
+        }
 
         <!-- Event Stats -->
         <BentoCard class="col-span-3 row-span-2">
@@ -292,9 +316,11 @@ const getEventTypeColor = (type: string) => {
   /* Hero Section */
   .hero {
     padding: var(--space-3xl) 0;
-    background: linear-gradient(135deg, 
-      color-mix(in srgb, var(--color-yellow) 10%, var(--color-bg)), 
-      var(--color-bg));
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-yellow) 10%, var(--color-bg)),
+      var(--color-bg)
+    );
     position: relative;
     overflow: hidden;
   }
@@ -311,7 +337,11 @@ const getEventTypeColor = (type: string) => {
   }
 
   .highlight {
-    background: linear-gradient(135deg, var(--color-yellow), var(--color-yellow-light));
+    background: linear-gradient(
+      135deg,
+      var(--color-yellow),
+      var(--color-yellow-light)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
