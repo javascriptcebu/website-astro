@@ -1,0 +1,637 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import BentoCard from '../components/BentoCard.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+
+// Sample blog posts data - in production, this would come from a CMS or markdown files
+const featuredPost = {
+  slug: 'building-modern-web-apps-2024',
+  title: 'Building Modern Web Apps in 2024: A Complete Guide',
+  excerpt: 'Explore the latest tools, frameworks, and best practices for building scalable web applications in 2024.',
+  author: 'Dorell James',
+  date: 'December 15, 2024',
+  readTime: '8 min read',
+  category: 'Tutorial',
+  tags: ['React', 'TypeScript', 'Next.js'],
+  image: 'featured'
+};
+
+const recentPosts = [
+  {
+    slug: 'getting-started-with-typescript',
+    title: 'Getting Started with TypeScript: A Beginner\'s Journey',
+    excerpt: 'Learn the fundamentals of TypeScript and how it can improve your JavaScript development workflow.',
+    author: 'Maria Santos',
+    date: 'December 10, 2024',
+    readTime: '5 min read',
+    category: 'Tutorial',
+    tags: ['TypeScript', 'JavaScript']
+  },
+  {
+    slug: 'react-server-components',
+    title: 'Understanding React Server Components',
+    excerpt: 'Deep dive into React Server Components and how they change the way we build React applications.',
+    author: 'John Cruz',
+    date: 'December 8, 2024',
+    readTime: '10 min read',
+    category: 'Deep Dive',
+    tags: ['React', 'Performance']
+  },
+  {
+    slug: 'vue-composition-api',
+    title: 'Mastering Vue 3 Composition API',
+    excerpt: 'Complete guide to Vue 3\'s Composition API with practical examples and best practices.',
+    author: 'Harlequin Doyon',
+    date: 'December 5, 2024',
+    readTime: '7 min read',
+    category: 'Tutorial',
+    tags: ['Vue', 'JavaScript']
+  },
+  {
+    slug: 'web-performance-optimization',
+    title: 'Web Performance Optimization Techniques',
+    excerpt: 'Essential techniques to make your web applications faster and more efficient.',
+    author: 'Cyrus Hiyas',
+    date: 'December 3, 2024',
+    readTime: '6 min read',
+    category: 'Performance',
+    tags: ['Performance', 'Best Practices']
+  },
+  {
+    slug: 'intro-to-web3',
+    title: 'Introduction to Web3 Development',
+    excerpt: 'Getting started with blockchain and decentralized application development.',
+    author: 'Alex Builder',
+    date: 'November 28, 2024',
+    readTime: '12 min read',
+    category: 'Web3',
+    tags: ['Blockchain', 'Web3', 'Ethereum']
+  },
+  {
+    slug: 'testing-best-practices',
+    title: 'Testing Best Practices for JavaScript Applications',
+    excerpt: 'Comprehensive guide to testing strategies, tools, and best practices.',
+    author: 'Sarah Tech',
+    date: 'November 25, 2024',
+    readTime: '9 min read',
+    category: 'Testing',
+    tags: ['Testing', 'Jest', 'Cypress']
+  }
+];
+
+const categories = ['All', 'Tutorial', 'Deep Dive', 'Performance', 'Web3', 'Testing', 'News'];
+---
+
+<Layout title="Blog">
+  <Navigation />
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-badge">Blog</span>
+          <h1>Community <span class="highlight">Insights</span></h1>
+          <p class="hero-description">
+            Technical articles, tutorials, and insights from the JavaScript Cebu community
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Post -->
+    <section class="section">
+      <div class="container">
+        <BentoGrid>
+          <BentoCard class="col-span-6 row-span-2" href={`/blog/${featuredPost.slug}`}>
+            <div class="featured-post">
+              <div class="featured-image">
+                <ImagePlaceholder height="100%" pattern="waves">
+                  <div class="image-overlay">
+                    <span class="featured-badge">Featured</span>
+                  </div>
+                </ImagePlaceholder>
+              </div>
+              <div class="featured-content">
+                <div class="post-meta">
+                  <span class="category">{featuredPost.category}</span>
+                  <span class="date">{featuredPost.date}</span>
+                  <span class="read-time">{featuredPost.readTime}</span>
+                </div>
+                <h2>{featuredPost.title}</h2>
+                <p>{featuredPost.excerpt}</p>
+                <div class="post-footer">
+                  <div class="author">
+                    <ImagePlaceholder width="40px" height="40px" pattern="circles">
+                      <span>👨‍💻</span>
+                    </ImagePlaceholder>
+                    <span>{featuredPost.author}</span>
+                  </div>
+                  <div class="tags">
+                    {featuredPost.tags.map(tag => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="filter-section">
+      <div class="container">
+        <div class="filter-tabs">
+          {categories.map((category, index) => (
+            <button class={`tab ${index === 0 ? 'active' : ''}`}>
+              {category}
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Posts -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Recent Articles</h2>
+        </div>
+        
+        <BentoGrid>
+          {recentPosts.map(post => (
+            <BentoCard class="col-span-3 row-span-2" href={`/blog/${post.slug}`}>
+              <article class="post-card">
+                <div class="post-image">
+                  <ImagePlaceholder height="200px" pattern="dots">
+                    <span class="post-category">{post.category}</span>
+                  </ImagePlaceholder>
+                </div>
+                <div class="post-content">
+                  <div class="post-meta">
+                    <span class="date">{post.date}</span>
+                    <span class="read-time">{post.readTime}</span>
+                  </div>
+                  <h3>{post.title}</h3>
+                  <p>{post.excerpt}</p>
+                  <div class="post-footer">
+                    <div class="author-info">
+                      <ImagePlaceholder width="32px" height="32px" pattern="circles">
+                        <span>👤</span>
+                      </ImagePlaceholder>
+                      <span class="author-name">{post.author}</span>
+                    </div>
+                    <span class="read-more">Read →</span>
+                  </div>
+                </div>
+              </article>
+            </BentoCard>
+          ))}
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="section-alt">
+      <div class="container">
+        <BentoGrid>
+          <BentoCard class="col-span-6" variant="gradient">
+            <div class="newsletter-cta">
+              <div class="newsletter-content">
+                <h2>Never Miss an Article</h2>
+                <p>Get the latest tutorials, insights, and community news delivered to your inbox.</p>
+                <form class="newsletter-form">
+                  <input type="email" placeholder="Enter your email" class="email-input" required />
+                  <button type="submit" class="submit-btn">Subscribe</button>
+                </form>
+                <span class="newsletter-note">Join 500+ developers. Unsubscribe anytime.</span>
+              </div>
+              <div class="newsletter-visual">
+                <ImagePlaceholder height="250px" pattern="circles">
+                  <span style="font-size: 5rem;">📬</span>
+                </ImagePlaceholder>
+              </div>
+            </div>
+          </BentoCard>
+        </BentoGrid>
+      </div>
+    </section>
+
+    <!-- Load More -->
+    <section class="section">
+      <div class="container">
+        <div class="load-more">
+          <button class="btn btn-secondary">Load More Articles</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    background: linear-gradient(135deg, 
+      color-mix(in srgb, var(--color-blue) 10%, var(--color-bg)),
+      var(--color-bg));
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: color-mix(in srgb, var(--color-blue) 15%, var(--color-bg));
+    border: 1px solid var(--color-blue);
+    border-radius: var(--radius-2xl);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-blue);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: var(--space-md);
+  }
+
+  .highlight {
+    background: linear-gradient(135deg, var(--color-blue), var(--color-blue-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Sections */
+  .section {
+    padding: var(--space-3xl) 0;
+  }
+
+  .section-alt {
+    padding: var(--space-3xl) 0;
+    background: var(--color-bg-secondary);
+  }
+
+  .section-header {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+  }
+
+  /* Featured Post */
+  .featured-post {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: var(--space-2xl);
+    height: 100%;
+    align-items: center;
+  }
+
+  .featured-image {
+    height: 100%;
+    min-height: 300px;
+    position: relative;
+  }
+
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--space-md);
+  }
+
+  .featured-badge {
+    padding: 0.375rem 0.75rem;
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .featured-content h2 {
+    font-size: 2rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .featured-content > p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-lg);
+  }
+
+  /* Filter Section */
+  .filter-section {
+    padding: var(--space-lg) 0;
+    background: var(--color-bg-secondary);
+    position: sticky;
+    top: 4rem;
+    z-index: 50;
+  }
+
+  .filter-tabs {
+    display: flex;
+    gap: var(--space-sm);
+    overflow-x: auto;
+    padding-bottom: var(--space-xs);
+  }
+
+  .filter-tabs::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .filter-tabs::-webkit-scrollbar-track {
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-sm);
+  }
+
+  .filter-tabs::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: var(--radius-sm);
+  }
+
+  .tab {
+    padding: 0.5rem 1.25rem;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-2xl);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+  }
+
+  .tab:hover {
+    background: var(--color-bg);
+  }
+
+  .tab.active {
+    background: var(--color-yellow);
+    color: var(--color-black);
+    border-color: var(--color-yellow);
+  }
+
+  /* Post Card */
+  .post-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-image {
+    position: relative;
+    margin-bottom: var(--space-lg);
+  }
+
+  .post-category {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.5rem 1rem;
+    background: var(--color-bg);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    box-shadow: var(--shadow-md);
+  }
+
+  .post-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-meta {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .post-meta .category {
+    color: var(--color-yellow);
+    font-weight: 600;
+  }
+
+  .post-card h3 {
+    margin-bottom: var(--space-sm);
+    line-height: 1.3;
+  }
+
+  .post-card > p,
+  .post-content > p {
+    flex: 1;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+  }
+
+  .post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .author,
+  .author-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .author span,
+  .author-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .tags {
+    display: flex;
+    gap: var(--space-xs);
+  }
+
+  .tag {
+    padding: 0.25rem 0.5rem;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .read-more {
+    color: var(--color-yellow);
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  /* Newsletter CTA */
+  .newsletter-cta {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
+    padding: var(--space-xl);
+  }
+
+  .newsletter-content h2 {
+    color: var(--color-black);
+    margin-bottom: var(--space-sm);
+  }
+
+  .newsletter-content p {
+    color: var(--color-black);
+    opacity: 0.8;
+    margin-bottom: var(--space-xl);
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: var(--space-sm);
+    max-width: 450px;
+    margin-bottom: var(--space-md);
+  }
+
+  .email-input {
+    flex: 1;
+    padding: 0.875rem 1.25rem;
+    background: var(--color-white);
+    border: 2px solid transparent;
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+  }
+
+  .email-input:focus {
+    outline: none;
+    border-color: var(--color-black);
+  }
+
+  .submit-btn {
+    padding: 0.875rem 2rem;
+    background: var(--color-black);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .submit-btn:hover {
+    background: var(--color-gray-800);
+    transform: translateY(-2px);
+  }
+
+  .newsletter-note {
+    font-size: 0.875rem;
+    color: var(--color-black);
+    opacity: 0.6;
+  }
+
+  /* Load More */
+  .load-more {
+    text-align: center;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    transition: all var(--transition-base);
+    display: inline-block;
+    text-decoration: none;
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-text);
+    border-color: var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-bg-secondary);
+    border-color: var(--color-text);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .featured-post {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-image {
+      min-height: 200px;
+    }
+
+    .newsletter-cta {
+      grid-template-columns: 1fr;
+    }
+
+    .newsletter-visual {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .filter-tabs {
+      gap: var(--space-xs);
+    }
+
+    .tab {
+      padding: 0.375rem 1rem;
+      font-size: 0.875rem;
+    }
+
+    .newsletter-form {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<script>
+  // Filter functionality
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      // In a real app, this would filter the posts
+    });
+  });
+
+  // Load more functionality
+  const loadMoreBtn = document.querySelector('.load-more button');
+  loadMoreBtn?.addEventListener('click', () => {
+    // In a real app, this would load more posts
+    console.log('Loading more posts...');
+  });
+</script>

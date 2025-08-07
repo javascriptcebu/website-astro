@@ -1,65 +1,65 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
-import BentoGrid from '../components/BentoGrid.astro';
-import BentoCard from '../components/BentoCard.astro';
-import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import BentoGrid from "../components/BentoGrid.astro";
+import BentoCard from "../components/BentoCard.astro";
+import ImagePlaceholder from "../components/ImagePlaceholder.astro";
 
 const logos = [
   {
-    name: 'Horizontal Logo - Light',
-    description: 'Best for light backgrounds',
-    format: 'PNG, SVG',
-    size: '1920x480'
+    name: "Horizontal Logo - Light",
+    description: "Best for light backgrounds",
+    format: "PNG, SVG",
+    size: "1920x480",
   },
   {
-    name: 'Horizontal Logo - Dark',
-    description: 'Best for dark backgrounds',
-    format: 'PNG, SVG',
-    size: '1920x480'
+    name: "Horizontal Logo - Dark",
+    description: "Best for dark backgrounds",
+    format: "PNG, SVG",
+    size: "1920x480",
   },
   {
-    name: 'Square Logo',
-    description: 'Perfect for social media',
-    format: 'PNG, SVG',
-    size: '1080x1080'
+    name: "Square Logo",
+    description: "Perfect for social media",
+    format: "PNG, SVG",
+    size: "1080x1080",
   },
   {
-    name: 'Icon Only',
-    description: 'Minimal branding',
-    format: 'PNG, SVG, ICO',
-    size: '512x512'
-  }
+    name: "Icon Only",
+    description: "Minimal branding",
+    format: "PNG, SVG, ICO",
+    size: "512x512",
+  },
 ];
 
 const templates = [
   {
-    name: 'Event Banner',
-    description: 'Customizable event announcements',
-    dimensions: '1920x1080'
+    name: "Event Banner",
+    description: "Customizable event announcements",
+    dimensions: "1920x1080",
   },
   {
-    name: 'Social Media Post',
-    description: 'Instagram and Facebook ready',
-    dimensions: '1080x1080'
+    name: "Social Media Post",
+    description: "Instagram and Facebook ready",
+    dimensions: "1080x1080",
   },
   {
-    name: 'LinkedIn Cover',
-    description: 'Professional network branding',
-    dimensions: '1584x396'
+    name: "LinkedIn Cover",
+    description: "Professional network branding",
+    dimensions: "1584x396",
   },
   {
-    name: 'Email Signature',
-    description: 'Professional email footer',
-    dimensions: '600x200'
-  }
+    name: "Email Signature",
+    description: "Professional email footer",
+    dimensions: "600x200",
+  },
 ];
 
 const brandColors = [
-  { name: 'Primary Yellow', hex: '#F4D03F' },
-  { name: 'React Blue', hex: '#61DAFB' },
-  { name: 'Vue Green', hex: '#42B883' },
-  { name: 'Angular Red', hex: '#DD0031' }
+  { name: "Primary Yellow", hex: "#F4D03F" },
+  { name: "React Blue", hex: "#61DAFB" },
+  { name: "Vue Green", hex: "#42B883" },
+  { name: "Angular Red", hex: "#DD0031" },
 ];
 ---
 
@@ -73,7 +73,8 @@ const brandColors = [
           <span class="hero-badge">Brand Assets</span>
           <h1>Promotional <span class="highlight">Materials</span></h1>
           <p class="hero-description">
-            Download official JavaScript Cebu brand assets for your events and promotions
+            Download official JavaScript Cebu brand assets for your events and
+            promotions
           </p>
         </div>
       </div>
@@ -87,40 +88,58 @@ const brandColors = [
           <h2>Official Logos</h2>
           <p>Download our logos in various formats and styles</p>
         </div>
-        
+
         <BentoGrid>
-          {logos.map((logo, index) => (
-            <BentoCard class="col-span-3">
-              <div class="logo-card">
-                <ImagePlaceholder width="100%" height="200px" pattern={index % 2 === 0 ? 'dots' : 'lines'}>
-                  <div class="logo-preview">
-                    <span style="font-size: 3rem;">🟨</span>
-                    <span style="font-size: 0.875rem; margin-top: 0.5rem;">JS Cebu</span>
+          {
+            logos.map((logo, index) => (
+              <BentoCard class="col-span-3">
+                <div class="logo-card">
+                  <ImagePlaceholder
+                    width="100%"
+                    height="200px"
+                    pattern={index % 2 === 0 ? "dots" : "lines"}
+                  >
+                    <div class="logo-preview">
+                      <span style="font-size: 3rem;">🟨</span>
+                      <span style="font-size: 0.875rem; margin-top: 0.5rem;">
+                        JSCebu
+                      </span>
+                    </div>
+                  </ImagePlaceholder>
+                  <h4>{logo.name}</h4>
+                  <p>{logo.description}</p>
+                  <div class="logo-meta">
+                    <span class="meta-item">📁 {logo.format}</span>
+                    <span class="meta-item">📐 {logo.size}</span>
                   </div>
-                </ImagePlaceholder>
-                <h4>{logo.name}</h4>
-                <p>{logo.description}</p>
-                <div class="logo-meta">
-                  <span class="meta-item">📁 {logo.format}</span>
-                  <span class="meta-item">📐 {logo.size}</span>
+                  <button class="download-btn">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="7 10 12 15 17 10" />
+                      <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Download
+                  </button>
                 </div>
-                <button class="download-btn">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                    <polyline points="7 10 12 15 17 10" />
-                    <line x1="12" y1="15" x2="12" y2="3" />
-                  </svg>
-                  Download
-                </button>
-              </div>
-            </BentoCard>
-          ))}
+              </BentoCard>
+            ))
+          }
 
           <!-- Download All -->
           <BentoCard class="col-span-6" variant="gradient">
             <div class="download-all">
               <h3>Get Everything at Once</h3>
-              <p>Download all logos in a single ZIP file including all formats and variations</p>
+              <p>
+                Download all logos in a single ZIP file including all formats
+                and variations
+              </p>
               <button class="btn btn-dark">
                 Download Complete Logo Pack (12MB)
               </button>
@@ -137,15 +156,16 @@ const brandColors = [
           <span class="section-label">Guidelines</span>
           <h2>Brand Guidelines</h2>
         </div>
-        
+
         <BentoGrid>
           <!-- Brand Story -->
           <BentoCard class="col-span-3 row-span-2">
             <div class="brand-story">
               <h3>Our Brand Story</h3>
               <p class="story-text">
-                JavaScript Cebu is a community driven organization for all communities but not limited to JS. 
-                We do meetups, codecamps and other types of events to pay it forward for others and help 
+                JavaScript Cebu is a community driven organization for all
+                communities but not limited to JS. We do meetups, codecamps and
+                other types of events to pay it forward for others and help
                 elevate the tech scene in Cebu.
               </p>
               <div class="brand-values">
@@ -165,13 +185,18 @@ const brandColors = [
             <div class="color-palette">
               <h3>Color Palette</h3>
               <div class="colors-grid">
-                {brandColors.map(color => (
-                  <div class="color-item">
-                    <div class="color-swatch" style={`background: ${color.hex};`}></div>
-                    <span class="color-name">{color.name}</span>
-                    <span class="color-hex">{color.hex}</span>
-                  </div>
-                ))}
+                {
+                  brandColors.map((color) => (
+                    <div class="color-item">
+                      <div
+                        class="color-swatch"
+                        style={`background: ${color.hex};`}
+                      />
+                      <span class="color-name">{color.name}</span>
+                      <span class="color-hex">{color.hex}</span>
+                    </div>
+                  ))
+                }
               </div>
             </div>
           </BentoCard>
@@ -182,14 +207,22 @@ const brandColors = [
               <h3>Typography</h3>
               <div class="font-samples">
                 <div class="font-sample">
-                  <span class="sample-text" style="font-family: var(--font-display); font-size: 2rem;">Aa</span>
+                  <span
+                    class="sample-text"
+                    style="font-family: var(--font-display); font-size: 2rem;"
+                    >Aa</span
+                  >
                   <div>
                     <span class="font-name">Sora</span>
                     <span class="font-usage">Headlines</span>
                   </div>
                 </div>
                 <div class="font-sample">
-                  <span class="sample-text" style="font-family: var(--font-sans); font-size: 2rem;">Aa</span>
+                  <span
+                    class="sample-text"
+                    style="font-family: var(--font-sans); font-size: 2rem;"
+                    >Aa</span
+                  >
                   <div>
                     <span class="font-name">DM Sans</span>
                     <span class="font-usage">Body Text</span>
@@ -237,33 +270,44 @@ const brandColors = [
           <h2>Design Templates</h2>
           <p>Ready-to-use templates for your community events</p>
         </div>
-        
+
         <BentoGrid>
-          {templates.map((template, index) => (
-            <BentoCard class="col-span-3">
-              <div class="template-card">
-                <ImagePlaceholder width="100%" height="180px" pattern={index % 2 === 0 ? 'grid' : 'waves'}>
-                  <div class="template-preview">
-                    <span style="font-size: 2rem;">📄</span>
+          {
+            templates.map((template, index) => (
+              <BentoCard class="col-span-3">
+                <div class="template-card">
+                  <ImagePlaceholder
+                    width="100%"
+                    height="180px"
+                    pattern={index % 2 === 0 ? "grid" : "waves"}
+                  >
+                    <div class="template-preview">
+                      <span style="font-size: 2rem;">📄</span>
+                    </div>
+                  </ImagePlaceholder>
+                  <h4>{template.name}</h4>
+                  <p>{template.description}</p>
+                  <span class="dimensions">📐 {template.dimensions}</span>
+                  <div class="template-actions">
+                    <button class="action-btn">Preview</button>
+                    <button class="action-btn primary">Download</button>
                   </div>
-                </ImagePlaceholder>
-                <h4>{template.name}</h4>
-                <p>{template.description}</p>
-                <span class="dimensions">📐 {template.dimensions}</span>
-                <div class="template-actions">
-                  <button class="action-btn">Preview</button>
-                  <button class="action-btn primary">Download</button>
                 </div>
-              </div>
-            </BentoCard>
-          ))}
+              </BentoCard>
+            ))
+          }
 
           <!-- Custom Request -->
           <BentoCard class="col-span-6" variant="primary">
             <div class="custom-request">
               <h3>Need Something Custom?</h3>
-              <p>Contact us for specific design needs or custom promotional materials</p>
-              <a href="/official-links" class="btn btn-dark">Request Custom Design</a>
+              <p>
+                Contact us for specific design needs or custom promotional
+                materials
+              </p>
+              <a href="/official-links" class="btn btn-dark"
+                >Request Custom Design</a
+              >
             </div>
           </BentoCard>
         </BentoGrid>
@@ -278,8 +322,10 @@ const brandColors = [
             <div class="license-info">
               <h3>License & Usage Rights</h3>
               <p>
-                All JavaScript Cebu brand assets are available under Creative Commons Attribution 4.0 International License. 
-                You are free to use, share, and adapt these materials for community events and promotions.
+                All JavaScript Cebu brand assets are available under Creative
+                Commons Attribution 4.0 International License. You are free to
+                use, share, and adapt these materials for community events and
+                promotions.
               </p>
               <div class="license-points">
                 <div class="license-point">
@@ -316,9 +362,11 @@ const brandColors = [
   /* Hero Section */
   .hero {
     padding: var(--space-3xl) 0 var(--space-2xl);
-    background: linear-gradient(135deg, 
+    background: linear-gradient(
+      135deg,
       color-mix(in srgb, var(--color-yellow) 15%, var(--color-bg)),
-      var(--color-bg));
+      var(--color-bg)
+    );
     text-align: center;
   }
 
@@ -346,7 +394,11 @@ const brandColors = [
   }
 
   .highlight {
-    background: linear-gradient(135deg, var(--color-yellow), var(--color-yellow-light));
+    background: linear-gradient(
+      135deg,
+      var(--color-yellow),
+      var(--color-yellow-light)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

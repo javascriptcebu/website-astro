@@ -40,3 +40,6 @@ Astro v5.x static site generator with TypeScript support. The project uses file-
 - No linting or formatting tools set up
 - ES modules are used throughout (`"type": "module"` in package.json)
 - The project is a clean Astro starter template ready for extension
+
+## Memories
+- Lets go
