@@ -12,7 +12,19 @@ const navItems = [
   { label: "Blog", href: "/blog" },
 ];
 
-const currentPath = Astro.url.pathname;
+// const currentPath = Astro.url.pathname;
+const rawPath = Astro.url.pathname;
+
+// Normalize server/client paths: keep root "/" but strip trailing slashes for any other path.
+// This makes comparisons robust across environments (dev preview, Netlify, etc.)
+// e.g. "/mission-vision" === "/mission-vision/" after normalization.
+const normalizePath = (p: any) => {
+  if (!p) return "/";
+  // keep root as "/", strip trailing slashes for others
+  return p === "/" ? "/" : p.replace(/\/+$/, "");
+};
+
+const currentPath = normalizePath(rawPath);
 ---
 
 <header class="header">
@@ -33,8 +45,10 @@ const currentPath = Astro.url.pathname;
           <li>
             <a
               href={item.href}
-              class={currentPath === item.href ? "active" : ""}
-              aria-current={currentPath === item.href ? "page" : undefined}
+              class={currentPath === normalizePath(item.href) ? "active" : ""}
+              aria-current={
+                currentPath === normalizePath(item.href) ? "page" : undefined
+              }
             >
               {item.label}
             </a>
@@ -326,11 +340,12 @@ const currentPath = Astro.url.pathname;
   // Theme toggle
   const themeToggle = document.querySelector(".theme-toggle");
   themeToggle?.addEventListener("click", () => {
-    const currentTheme = document.documentElement.getAttribute("data-theme") || "light";
+    const currentTheme =
+      document.documentElement.getAttribute("data-theme") || "light";
     const newTheme = currentTheme === "light" ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", newTheme);
     localStorage.setItem("theme", newTheme);
-    
+
     // Log for debugging
     console.log(`Theme changed from ${currentTheme} to ${newTheme}`);
   });
